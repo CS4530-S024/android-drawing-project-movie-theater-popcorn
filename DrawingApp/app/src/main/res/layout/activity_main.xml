@@ -11,4 +11,9 @@
         android:name="com.example.drawingapp.SplashScreenFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <com.example.drawingapp.DrawView
+        android:id="@+id/draw_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>
