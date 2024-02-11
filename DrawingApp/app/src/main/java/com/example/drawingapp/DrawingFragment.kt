@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import com.example.drawingapp.databinding.FragmentDrawingBinding
 
 /**
@@ -28,6 +29,19 @@ class DrawingFragment : Fragment()
         binding.backButton.setOnClickListener{
             switchScreenCallback()
         }
+
+        // TODO: Move to DrawingFragment; just used for testing
+        val paint: DrawView = binding.drawView
+        paint.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                paint.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val width = paint.measuredWidth
+                val height = paint.measuredHeight
+                paint.init(height, width)
+            }
+        })
+
+
         // Inflate the layout for this fragment
         return binding.root
     }

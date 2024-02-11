@@ -13,15 +13,6 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO: Move to DrawingFragment; just used for testing
-        val paint: DrawView = findViewById(R.id.draw_view)
-        paint.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                paint.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                val width = paint.measuredWidth
-                val height = paint.measuredHeight
-                paint.init(height, width)
-
         val fragSplash = SplashScreenFragment()
         fragSplash.setListener(){
             val fragHome = HomeScreenFragment()
