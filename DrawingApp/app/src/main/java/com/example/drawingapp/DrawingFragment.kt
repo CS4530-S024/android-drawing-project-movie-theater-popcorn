@@ -30,7 +30,11 @@ class DrawingFragment : Fragment()
             switchScreenCallback()
         }
 
-        // TODO: Move to DrawingFragment; just used for testing
+        binding.colorSelectButton.setOnClickListener{
+            ColorSelectDialogFragment().show(
+                childFragmentManager, ColorSelectDialogFragment.TAG)
+        }
+
         val paint: DrawView = binding.drawView
         paint.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
