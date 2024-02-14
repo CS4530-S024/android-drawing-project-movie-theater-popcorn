@@ -39,7 +39,7 @@ class DrawingFragment : Fragment()
                 val height = paint.measuredHeight
                 paint.init(height, width)
             }
-        })
+      })
 
 
         // Inflate the layout for this fragment
