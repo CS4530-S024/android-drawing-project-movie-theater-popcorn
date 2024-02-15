@@ -2,7 +2,7 @@ package com.example.drawingapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ViewTreeObserver
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.drawingapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()
@@ -11,12 +11,12 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
+        Thread.sleep(3000)
+        installSplashScreen()
         setContentView(R.layout.activity_main)
 
-        val fragSplash = SplashScreenFragment()
-        fragSplash.setListener(){
-            val fragHome = HomeScreenFragment()
-            fragHome.setListener {
+        val homeFrag = HomeScreenFragment()
+        homeFrag.setListener(){
                 val fragDraw = DrawingFragment()
                 fragDraw.setListener {
                     supportFragmentManager.popBackStack()
@@ -26,19 +26,12 @@ class MainActivity : AppCompatActivity()
                 fTrans.replace(R.id.fragmentContainerView, fragDraw)
                 fTrans.addToBackStack(null)
                 fTrans.commit()
-            }
-
-            val fTrans = supportFragmentManager.beginTransaction()
-            fTrans.replace(R.id.fragmentContainerView, fragHome)
-            //ftrans.addToBackStack(null) //does a back button to the splash screen, we don't need it on the home screen.
-            fTrans.commit()
         }
 
         val fTrans = supportFragmentManager.beginTransaction()
-        fTrans.replace(R.id.fragmentContainerView, fragSplash)
+        fTrans.replace(R.id.fragmentContainerView, homeFrag)
         fTrans.commit()
 
         setContentView(binding.root)
-
     }
 }
