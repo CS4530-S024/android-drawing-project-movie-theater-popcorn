@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.drawingapp.databinding.FragmentHomeScreenBinding
-import com.example.drawingapp.databinding.FragmentSplashScreenBinding
 
 
 /**
