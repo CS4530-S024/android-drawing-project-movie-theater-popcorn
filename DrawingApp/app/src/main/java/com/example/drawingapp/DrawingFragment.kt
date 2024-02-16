@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.fragment.app.activityViewModels
 import com.example.drawingapp.databinding.FragmentDrawingBinding
 import kotlin.math.abs
@@ -54,6 +55,24 @@ class DrawingFragment : Fragment()
         binding.backButton.setOnClickListener{
             switchScreenCallback()
         }
+
+        binding.penSizeSlider.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            /*
+                Used to change the pen's drawing width
+             */
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                currPen.strokeWidth = (progress + 1) * 10;
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Write code to perform some action when touch is started.
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // Write code to perform some action when touch is stopped.
+
+            }
+        })
 
         binding.colorSelectButton.setOnClickListener{
             ColorSelectDialogFragment().show(
