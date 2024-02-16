@@ -19,14 +19,27 @@ class DrawingFragmentEspressoTest {
     @get: Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
-    //TODO: update test below it is just a placeholder
-
     fun goToDrawFrag(){
         //clicks on the imageView
         onView(withId(R.id.imageView)).perform(click())
         //clicks on the new canvas drawing
         onView((withId(R.id.newCanvasButton))).perform(click())
     }
+
+//Checks that all the components exist on the Drawing Fragments
+    //TODO: Create test: Navigation to the Drawing fragment
+    //TODO: Create test: check the canvas exists
+    //TODO: Create test: check if the canvas name is on the drawing Fragment
+    //TODO: Create test: check if the eraser button is on the screen
+    //TODO: Create test: check back button exists
+    //TODO: Create test: check the save button exists
+    //TODO: Create test: check the more colors button exists
+    //TODO: Create test: check the pen shape button exists
+    //TODO: Create test: check the sliders (RGB) for the pen color exist
+    //TODO: Create test: check label exists for each color (RGB) slider exist
+    //TODO: Create test: check number value label exists for each color (RGB) slider exist
+    //TODO: Create test: check the size slider for the pen exists
+
     @Test
     fun goToDrawingFragment() {
         goToDrawFrag()
@@ -39,30 +52,69 @@ class DrawingFragmentEspressoTest {
         goToDrawFrag()
         //TODO: find Canvas id
     }
+    @Test
+    fun checkDrawingNameExist() {
+        goToDrawFrag()
+        //TODO: find Canvas id
+    }
+    @Test
+    fun checkEraserButtonExist() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
 
     @Test
-    fun checkPenButtonExist() {
+    fun checkBackButtonExist() {
         goToDrawFrag()
-        //checks button name
-        onView(withId(R.id.penButton)).check(matches(withText("Pen")))
+        //TODO: find eraser id
+    }
+    @Test
+    fun checkSaveButtonExist() {
+        goToDrawFrag()
+        //TODO: find eraser id
     }
 
     @Test
     fun checkColorButtonExist() {
         goToDrawFrag()
-        //checks button name
-        onView(withId(R.id.penButton)).check(matches(withText("Pen")))
+        //TODO: find eraser id
     }
 
-//Checks that all the components exist on the Drawing Fragments
-    //TODO: Create test: check if the canvas name is on there
-    //TODO: Create test: check if the eraser button is on the screen
-    //TODO: Create test: check back button exists
-    //TODO: Create test: check the save button exists
-    //TODO: Create test: check the more colors button exists
-    //TODO: Create test: check the sliders (RGB) for the pen color exist
-    //TODO: Create test: check the size slider for the pen exists
-    //TODO: Create test: check the canvas exists
+    @Test
+    fun checkPenShapeButtonExist() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun checkRGBSlidersExist() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun checkRGBLabelSlidersExist() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun checkRGBNumberLabelSlidersExist() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun checkSizeSlidersExist() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun checkSizeLabelSlidersExist() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun checkSizeNumberLabelSlidersExist() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
 
 //Checks functionality of buttons/sliders on the screen
     //TODO: Create test: check the name of the canvas updates when you click on save and reopen drawing
@@ -71,5 +123,34 @@ class DrawingFragmentEspressoTest {
     //TODO: Create test: check pen size updates when using slider
     //TODO: Create test: check pen color updates when using sliders
     //TODO: Create test: check eraser updates the canvas
-
+    @Test
+    fun drawingNameUpdatesWithSave() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun backButtonNavigatesToHomeScreen() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun penShapeUpdates() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun penSizeUpdates() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun penColorUpdates() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
+    @Test
+    fun eraserUpdatesCanvas() {
+        goToDrawFrag()
+        //TODO: find eraser id
+    }
 }
