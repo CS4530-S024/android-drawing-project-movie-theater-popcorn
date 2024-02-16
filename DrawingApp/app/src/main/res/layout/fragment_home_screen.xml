@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +10,42 @@
         android:id="@+id/newCanvasButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="122dp"
+        android:layout_marginEnd="123dp"
+        android:layout_marginBottom="200dp"
         android:text="Start New Drawing"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="483dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/homeTitle"
+        android:layout_width="356dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="251dp"
+        android:text="Movie Theater Popcorn Drawing App"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="113dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="23dp"
+        android:text="PIck Existing Drawing"
+        app:layout_constraintBottom_toTopOf="@+id/newCanvasButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
