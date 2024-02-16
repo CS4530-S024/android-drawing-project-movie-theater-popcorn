@@ -98,7 +98,7 @@ class DrawingFragment : Fragment()
             viewModel.setCurrentPen(currPen)
             drawPath()
 
-            v?.onTouchEvent(event) ?: true
+            true
         }
 
         // Inflate the layout for this fragment
@@ -143,7 +143,7 @@ class DrawingFragment : Fragment()
     private fun drawPath() {
         Log.d("DrawingFragment", "DRAWING PATH")
         val currentPen = viewModel.currentPen.value!!
-        //viewModel.bitmapCanvas.value!!.drawPath(currentPen.path, paint)
+        viewModel.bitmapCanvas.value!!.drawPath(currentPen.path, paint)
         binding.drawView.setBitmap(viewModel.bitmap.value!!)
         binding.drawView.setPaint(paint)
         binding.drawView.invalidate()
