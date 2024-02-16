@@ -36,7 +36,7 @@ class DrawingFragment : Fragment()
     {
         binding = FragmentDrawingBinding.inflate(layoutInflater)
 
-        viewModel.setCurrentPen(Pen(Color.BLACK, 20, Path()))
+        viewModel.setCurrentPen(Pen(Color.RED, 20, Path()))
 
         viewModel.bitmapCanvas.value!!.drawColor(Color.GRAY)
 

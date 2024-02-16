@@ -2,16 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MainActivity">
-      <entry key="DrawingAppEspressoTest">
-        <State />
-      </entry>
-      <entry key="DrawingFragmentEspressoTest">
-        <State />
-      </entry>
-      <entry key="FragmentTransactionsEspressoTest">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>
