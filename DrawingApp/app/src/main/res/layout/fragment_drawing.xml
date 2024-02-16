@@ -13,27 +13,28 @@
         android:layout_height="69dp"
         android:layout_marginTop="29dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/drawingToolsLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <EditText
             android:id="@+id/imageName"
             android:layout_width="179dp"
-            android:layout_height="35dp"
-            android:text="My Drawing" />
+            android:layout_height="39dp"
+            android:hint="Drawing Name" />
 
-        <Button
+        <ImageButton
             android:id="@+id/saveButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="58dp"
+            android:src="@drawable/ic_save"
             android:text="Save" />
 
         <Button
             android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="101dp"
+            android:layout_height="59dp"
             android:text="Back to Main" />
     </LinearLayout>
 
@@ -41,13 +42,13 @@
         android:id="@+id/draw_view"
         android:layout_width="414dp"
         android:layout_height="499dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/drawingToolsLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/drawingToolsLayout"
         android:layout_width="409dp"
         android:layout_height="131dp"
         android:layout_marginTop="499dp"
@@ -59,41 +60,66 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="196dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <Button
+            <ImageButton
                 android:id="@+id/penButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pen" />
+                android:layout_width="69dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="14dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pencil"
+                app:layout_constraintBottom_toTopOf="@+id/penSizeSlider"
+                app:layout_constraintEnd_toStartOf="@+id/eraserButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/eraserButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Eraser" />
+                android:layout_width="69dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="15dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/eraser"
+                app:layout_constraintBottom_toTopOf="@+id/penSizeSlider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/penButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <SeekBar
                 android:id="@+id/penSizeSlider"
-                style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_width="187dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="16dp"
                 android:max="5"
-                android:progress="3" />
-        </LinearLayout>
+                android:progress="3"
+                android:splitTrack="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.555"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/penButton" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/button5"
             android:layout_width="60dp"
             android:layout_height="51dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/colorSelectButton"
-            android:layout_width="94dp"
-            android:layout_height="65dp"
+            android:layout_width="87dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_color_palete"
             android:text="More Colors" />
     </LinearLayout>
 
