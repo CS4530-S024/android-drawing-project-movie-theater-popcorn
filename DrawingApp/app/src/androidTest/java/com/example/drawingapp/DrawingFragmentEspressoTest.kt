@@ -151,7 +151,7 @@ class DrawingFragmentEspressoTest {
     @Test
     fun penShapeUpdates() {
         createNewDrawing()
-        val oldPenSize = 
+//        val oldPenSize =
         //TODO: perform action to check value of pen
     }
     @Test
