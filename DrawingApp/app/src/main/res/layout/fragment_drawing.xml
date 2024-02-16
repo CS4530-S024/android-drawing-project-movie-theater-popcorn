@@ -9,33 +9,91 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="411dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="29dp"
+        android:layout_width="407dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/drawingToolsLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/imageName"
-            android:layout_width="179dp"
-            android:layout_height="39dp"
-            android:hint="Drawing Name" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
-        <ImageButton
-            android:id="@+id/saveButton"
-            android:layout_width="60dp"
-            android:layout_height="58dp"
-            android:src="@drawable/ic_save"
-            android:text="Save" />
+            <EditText
+                android:id="@+id/imageName"
+                android:layout_width="179dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:hint="Drawing Name"
+                app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+                app:layout_constraintEnd_toStartOf="@+id/saveButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="101dp"
-            android:layout_height="59dp"
-            android:text="Back to Main" />
+            <ImageButton
+                android:id="@+id/saveButton"
+                android:layout_width="60dp"
+                android:layout_height="58dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="11dp"
+                android:src="@drawable/ic_save"
+                android:text="Save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/backButton"
+                app:layout_constraintStart_toEndOf="@+id/imageName"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="97dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="9dp"
+                android:text="Back to Main"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/saveButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="73dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_undo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageName" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="72dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_redo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/saveButton"
+                app:layout_constraintStart_toEndOf="@+id/imageButton2"
+                app:layout_constraintTop_toBottomOf="@+id/imageName" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 
     <com.example.drawingapp.DrawView
