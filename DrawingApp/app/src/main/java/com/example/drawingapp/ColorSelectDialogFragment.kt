@@ -17,6 +17,7 @@ class ColorSelectDialogFragment : DialogFragment() {
     ): View {
         binding = FragmentColorSelectBinding.inflate(layoutInflater)
         return binding.root
+
     }
 
     companion object {
