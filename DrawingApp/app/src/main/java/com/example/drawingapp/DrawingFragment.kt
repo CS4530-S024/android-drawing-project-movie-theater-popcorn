@@ -94,7 +94,9 @@ class DrawingFragment : Fragment()
                     touchUp()
                 }
             }
-            currPen = Pen(paint.color, paint.strokeWidth.toInt(), currentPath)
+            currPen = Pen(viewModel.currentPen.value!!.color,
+                viewModel.currentPen.value!!.strokeWidth, currentPath)
+
             viewModel.setCurrentPen(currPen)
             drawPath()
 
@@ -109,7 +111,6 @@ class DrawingFragment : Fragment()
     // Creates new stroke (adds to list)
     private fun touchStart(x: Float, y: Float) {
         currentPath = Path()
-
         // Sets starting point of line being drawn
         currentPath.moveTo(x, y)
 
@@ -143,6 +144,8 @@ class DrawingFragment : Fragment()
     private fun drawPath() {
         Log.d("DrawingFragment", "DRAWING PATH")
         val currentPen = viewModel.currentPen.value!!
+        paint.color = currentPen.color
+        paint.strokeWidth = currentPen.strokeWidth.toFloat()
         viewModel.bitmapCanvas.value!!.drawPath(currentPen.path, paint)
         binding.drawView.setBitmap(viewModel.bitmap.value!!)
         binding.drawView.setPaint(paint)
