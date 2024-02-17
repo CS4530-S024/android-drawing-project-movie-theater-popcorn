@@ -44,6 +44,12 @@ class DrawingFragment : Fragment()
         paint.strokeWidth = viewModel.currentPen.value!!.strokeWidth.toFloat()
         paint.color = viewModel.currentPen.value!!.color
 
+
+        paint.style = Paint.Style.STROKE
+        paint.strokeJoin = Paint.Join.ROUND
+        paint.strokeCap = Paint.Cap.ROUND
+
+
         binding.drawView.setBitmap(viewModel.bitmap.value!!)
         binding.drawView.setPaint(paint)
 
