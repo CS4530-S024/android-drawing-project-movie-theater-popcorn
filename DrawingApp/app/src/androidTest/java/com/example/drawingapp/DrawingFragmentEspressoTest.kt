@@ -185,7 +185,7 @@ class DrawingFragmentEspressoTest {
 //        setPeekBar(R.id.penSizeSlider, 5)
 //        checkPeekBar(R.id.penSizeSlider, 5)
 //        TODO check pen size
-    }
+//    }
     @Test
     fun penColorUpdates() {
         var greenValue = 0
