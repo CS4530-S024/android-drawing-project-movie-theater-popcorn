@@ -2,8 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MainActivity">
-      <entry key="DrawingAppEspressoTest">
+      <entry key="CanvasEspressoTest">
         <State />
       </entry>
       <entry key="DrawingFragmentEspressoTest">
@@ -13,6 +12,12 @@
         <State />
       </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="goToDrawingFragment()">
+        <State />
+      </entry>
+      <entry key="penSizeUpdates()">
         <State />
       </entry>
     </value>

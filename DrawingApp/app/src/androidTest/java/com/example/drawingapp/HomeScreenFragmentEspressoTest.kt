@@ -21,22 +21,44 @@ class CanvasEspressoTest {
 
     @Test
     fun goToDrawingFragment() {
-        //clicks on the imageView
-        onView(withId(R.id.imageView)).perform(click())
         //clicks on the new canvas drawing
-        onView((withId(R.id.newCanvasButton))).perform(click())
+        componentExistCheck(R.id.newCanvasButton)
+        clickButton(R.id.newCanvasButton)
         //checks if Save text is on the current Screen to verify we are on the Drawing Fragment
-        onView(withText("Save")).check(matches(isDisplayed()))
+        componentExistCheck(R.id.saveButton)
     }
-
 
     //TODO: Create test: Check new drawing button exists
     //TODO: Create test: Check existing drawing exists
     //TODO: Create test: Navigation test when click on new drawing button
     //TODO: Create test: Navigation test when click on saved drawing
-    //TODO: Create test: Open an existing drawing
-    //TODO: Create test: Open a new drawing
-    //TODO: Create test: ???
+    @Test
+    fun checkNewDrawingButtonExists() {
+        componentExistCheck(R.id.newCanvasButton)
+    }
+    @Test
+    fun checkExistingDrawingExists() {
+        componentExistCheck(R.id.button)
 
+    }
+    @Test
+    fun checkNewDrawingButton() {
+        clickButton(R.id.newCanvasButton)
+        componentExistCheck(R.id.saveButton)
+    }
+    @Test
+    fun checkExistingDrawingButton() {
+        TODO("not yet implemented")
+    }
+
+    /***
+     * Helper methods
+     */
+    private fun clickButton(id: Int){
+        onView(withId(id)).perform(click())
+    }
+    private fun componentExistCheck(id: Int){
+        onView(withId(id)).check(matches(isDisplayed()))
+    }
 
 }

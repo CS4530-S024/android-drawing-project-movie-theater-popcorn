@@ -21,33 +21,38 @@ class FragmentTransactionsEspressoTest {
 
     @Test
     fun goToDrawingFragment() {
-        //clicks on the imageView
-        onView(withId(R.id.imageView)).perform(click())
         //clicks on the new canvas drawing
-        onView((withId(R.id.newCanvasButton))).perform(click())
+        clickButton(R.id.newCanvasButton)
         //checks if Save text is on the current Screen to verify we are on the Drawing Fragment
-        onView(withText("Save")).check(matches(isDisplayed()))
+        componentExistCheck(R.id.saveButton)
     }
 
     @Test
     fun goBackToHomeScreenFragment() {
-        //clicks on the imageView
-        onView(withId(R.id.imageView)).perform(click())
         //clicks on the new canvas drawing
-        onView((withId(R.id.newCanvasButton))).perform(click())
-        //clicks on
-        onView((withId(R.id.backButton))).perform(click())
+        componentExistCheck(R.id.newCanvasButton)
+        clickButton(R.id.newCanvasButton)
+        //clicks on the back button
+        componentExistCheck(R.id.backButton)
+        clickButton(R.id.backButton)
         //checks if we have made it back to the home screen
         onView(withText("Start New Drawing")).check(matches(isDisplayed()))
     }
 
     @Test
     fun onTheHomeScreenFragment() {
-        //clicks on the imageView
-        onView(withId(R.id.imageView)).perform(click())
         //checks if we are on the home screen
         onView(withText("Start New Drawing")).check(matches(isDisplayed()))
+        componentExistCheck(R.id.newCanvasButton)
     }
 
-    //TODO: Create Check splash screen test
+    /***
+     * Helper methods
+     */
+    private fun clickButton(id: Int){
+        onView(withId(id)).perform(click())
+    }
+    private fun componentExistCheck(id: Int){
+        onView(withId(id)).check(matches(isDisplayed()))
+    }
 }
