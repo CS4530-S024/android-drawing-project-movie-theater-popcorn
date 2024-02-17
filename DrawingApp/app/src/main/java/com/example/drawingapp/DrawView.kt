@@ -11,17 +11,7 @@ import android.view.View
 class DrawView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private var paint: Paint = Paint() // Holds color and style info
     private var bitmap: Bitmap? = null
-//    private val mBitmapPaint = Paint(Paint.DITHER_FLAG)
 
-    init {
-//        mPaint.isAntiAlias = true
-//        mPaint.isDither = true // Makes strokes smoother
-//        mPaint.color = Color.GREEN
-//        mPaint.style = Paint.Style.STROKE
-//        mPaint.strokeJoin = Paint.Join.ROUND
-//        mPaint.strokeCap = Paint.Cap.ROUND
-//        mPaint.alpha = 0xff // 0xff=255, sets transparency of pen
-    }
     fun setPaint(paint: Paint) {
         this.paint = paint
     }

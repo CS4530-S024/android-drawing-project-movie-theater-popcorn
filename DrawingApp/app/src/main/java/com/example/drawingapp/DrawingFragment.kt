@@ -38,24 +38,14 @@ class DrawingFragment : Fragment()
         binding = FragmentDrawingBinding.inflate(layoutInflater)
 
         viewModel.setCurrentPen(Pen(Color.RED, 20, Path()))
+        viewModel.setCurrentCap(Paint.Cap.ROUND)
+        viewModel.setCurrentJoin(Paint.Join.ROUND)
 
         viewModel.bitmapCanvas.value!!.drawColor(Color.GRAY)
 
-        paint.strokeWidth = viewModel.currentPen.value!!.strokeWidth.toFloat()
-        paint.color = viewModel.currentPen.value!!.color
-
-
         paint.style = Paint.Style.STROKE
-        paint.strokeJoin = Paint.Join.ROUND
-        paint.strokeCap = Paint.Cap.ROUND
-
-
-        binding.drawView.setBitmap(viewModel.bitmap.value!!)
         binding.drawView.setPaint(paint)
-
-//        viewModel.bitmap.observe(viewLifecycleOwner){
-//            bitmapCanvas = Canvas(viewModel.bitmap.value!!)
-//        }
+        binding.drawView.setBitmap(viewModel.bitmap.value!!)
 
         //Goes back to the main screen
         binding.backButton.setOnClickListener{
@@ -67,7 +57,7 @@ class DrawingFragment : Fragment()
                 Used to change the pen's drawing width
              */
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                currPen.strokeWidth = (progress + 1) * 10;
+                currPen.strokeWidth = (progress + 1) * 10
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -85,7 +75,22 @@ class DrawingFragment : Fragment()
                 childFragmentManager, ColorSelectDialogFragment.TAG)
         }
 
-        binding.drawView.setOnTouchListener { v, event ->
+        binding.shapeButton1.setOnClickListener{
+            viewModel.setCurrentCap(Paint.Cap.ROUND)
+            viewModel.setCurrentJoin(Paint.Join.ROUND)
+        }
+
+        binding.shapeButton2.setOnClickListener{
+            viewModel.setCurrentCap(Paint.Cap.SQUARE)
+            viewModel.setCurrentJoin(Paint.Join.BEVEL)
+        }
+
+        binding.shapeButton3.setOnClickListener{
+            viewModel.setCurrentCap(Paint.Cap.BUTT)
+            viewModel.setCurrentJoin(Paint.Join.MITER)
+        }
+
+        binding.drawView.setOnTouchListener { _, event ->
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> {
                     Log.d("touch", "TOUCH DOWN")
@@ -149,10 +154,15 @@ class DrawingFragment : Fragment()
 
     private fun drawPath() {
         Log.d("DrawingFragment", "DRAWING PATH")
+
         val currentPen = viewModel.currentPen.value!!
         paint.color = currentPen.color
         paint.strokeWidth = currentPen.strokeWidth.toFloat()
+        paint.strokeCap = viewModel.currentCap.value!!
+        paint.strokeJoin = viewModel.currentJoin.value!!
+
         viewModel.bitmapCanvas.value!!.drawPath(currentPen.path, paint)
+
         binding.drawView.setBitmap(viewModel.bitmap.value!!)
         binding.drawView.setPaint(paint)
         binding.drawView.invalidate()
