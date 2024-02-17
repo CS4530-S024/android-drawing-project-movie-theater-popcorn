@@ -155,9 +155,11 @@
                 android:id="@+id/penSizeSlider"
                 android:layout_width="187dp"
                 android:layout_height="35dp"
+
                 android:layout_marginBottom="5dp"
                 android:max="4"
                 android:progress="1"
+
                 android:splitTrack="true"
                 android:thumbTint="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
