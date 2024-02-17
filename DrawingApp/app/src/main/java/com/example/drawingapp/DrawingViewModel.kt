@@ -15,7 +15,6 @@ class DrawingViewModel: ViewModel() {
     private val _bitmapCanvas : MutableLiveData<Canvas> = MutableLiveData(Canvas(bitmap.value!!))
     val bitmapCanvas = _bitmapCanvas as LiveData<Canvas>
 
-
     private val _currentPen = MutableLiveData<Pen>()
     var currentPen = _currentPen as LiveData<Pen>
 

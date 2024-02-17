@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity()
         //Code for the splash screen
         Thread.sleep(2000)
         installSplashScreen()
+
         setContentView(R.layout.activity_main)
 
         val homeFrag = HomeScreenFragment()

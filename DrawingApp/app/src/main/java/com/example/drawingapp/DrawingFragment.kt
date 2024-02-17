@@ -41,7 +41,7 @@ class DrawingFragment : Fragment()
         viewModel.setCurrentCap(Paint.Cap.ROUND)
         viewModel.setCurrentJoin(Paint.Join.ROUND)
 
-        viewModel.bitmapCanvas.value!!.drawColor(Color.GRAY)
+        viewModel.bitmapCanvas.value!!.drawColor(Color.WHITE)
 
         paint.style = Paint.Style.STROKE
         binding.drawView.setPaint(paint)
@@ -66,7 +66,6 @@ class DrawingFragment : Fragment()
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 // Write code to perform some action when touch is stopped.
-
             }
         })
 
