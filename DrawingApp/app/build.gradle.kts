@@ -36,6 +36,11 @@ android {
 
     buildFeatures{
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.2"
     }
 }
 
@@ -59,4 +64,8 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    //Compose
+    implementation(platform("androidx.compose:compose-bom:2024.02.02"))
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+
 }
