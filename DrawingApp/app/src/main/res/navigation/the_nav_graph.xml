@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/the_nav_graph"
+    app:startDestination="@id/fragment_home_screen">
+
+    <fragment
+        android:id="@+id/fragment_home_screen"
+        android:name="com.example.drawingapp.HomeScreenFragment"
+        android:label="fragment_home_screen">
+        <action
+            android:id="@+id/newCanvasButton"
+            app:destination="@+id/fragment_drawing" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_drawing"
+        android:name="com.example.drawingapp.DrawingFragment"
+        android:label="fragment_home_screen">
+        <action
+            android:id="@+id/backButton"
+            app:destination="@+id/fragment_home_screen" />
+    </fragment>
+</navigation>

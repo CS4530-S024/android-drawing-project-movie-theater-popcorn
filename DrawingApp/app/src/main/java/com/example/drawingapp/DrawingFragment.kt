@@ -14,13 +14,13 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.drawingapp.databinding.FragmentDrawingBinding
 import kotlin.math.abs
 
 class DrawingFragment : Fragment()
 {
     private lateinit var binding: FragmentDrawingBinding
-    private var switchScreenCallback: () -> Unit = {}
     private var paint = Paint()
     private val touchTolerance = 4f // Used for line smoothing;
     private var mX = 0f // Finger X position
@@ -51,7 +51,7 @@ class DrawingFragment : Fragment()
 
         //Goes back to the main screen
         binding.backButton.setOnClickListener{
-            switchScreenCallback()
+            findNavController().navigate(R.id.backButton)
         }
 
         binding.penSizeSlider.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
@@ -146,11 +146,6 @@ class DrawingFragment : Fragment()
 
     private fun touchUp() {
         currentPath.lineTo(mX, mY)
-    }
-
-
-    fun setListener(listener: () -> Unit){
-        switchScreenCallback = listener
     }
 
     private fun drawPath() {

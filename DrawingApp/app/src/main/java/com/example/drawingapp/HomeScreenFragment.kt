@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.drawingapp.databinding.FragmentHomeScreenBinding
-
 
 /**
  * A simple [Fragment] subclass.
@@ -16,8 +16,6 @@ import com.example.drawingapp.databinding.FragmentHomeScreenBinding
 class HomeScreenFragment : Fragment()
 {
     private lateinit var binding: FragmentHomeScreenBinding
-    private var switchScreenCallback: () -> Unit = {}
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,16 +25,9 @@ class HomeScreenFragment : Fragment()
         binding = FragmentHomeScreenBinding.inflate(layoutInflater)
 
         binding.newCanvasButton.setOnClickListener{
-            switchScreenCallback()
-            //do other things for creating a new canvas.
+            findNavController().navigate(R.id.newCanvasButton)
         }
         // Inflate the layout for this fragment
         return binding.root
     }
-
-
-    fun setListener(listener: () -> Unit){
-        switchScreenCallback = listener
-    }
-
 }
