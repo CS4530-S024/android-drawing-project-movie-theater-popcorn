@@ -27,6 +27,12 @@ class HomeScreenFragment : Fragment()
         binding.newCanvasButton.setOnClickListener{
             findNavController().navigate(R.id.newCanvasButton)
         }
+
+        binding.existingDrawing.setOnClickListener{
+            findNavController().navigate(R.id.existingDrawing)
+            //TODO: grab drawing from db and import into drawingfragment
+        }
+
         // Inflate the layout for this fragment
         return binding.root
     }

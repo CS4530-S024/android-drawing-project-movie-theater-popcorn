@@ -12,6 +12,9 @@
         <action
             android:id="@+id/newCanvasButton"
             app:destination="@+id/fragment_drawing" />
+        <action
+            android:id="@+id/existingDrawing"
+            app:destination="@+id/fragment_drawing" />
     </fragment>
     <fragment
         android:id="@+id/fragment_drawing"

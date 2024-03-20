@@ -97,6 +97,10 @@ class ColorSelectDialogFragment : DialogFragment() {
             val currPen = viewModel.currentPen.value!!
             currPen.color = prevColor
         }
+        binding.newPenColor.setOnClickListener{
+            val currPen = viewModel.currentPen.value!!
+            currPen.color = currPen.color
+        }
 
         return binding.root
     }
