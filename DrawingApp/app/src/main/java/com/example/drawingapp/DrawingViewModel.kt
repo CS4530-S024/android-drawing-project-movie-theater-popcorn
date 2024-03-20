@@ -10,8 +10,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.flow.Flow
 
-class DrawingViewModel(private val repository: DrawingRepository): ViewModel() {
-    private val _bitmap : MutableLiveData<Bitmap> =
+//class DrawingViewModel(private val repository: DrawingRepository): ViewModel() {
+class DrawingViewModel(): ViewModel() {
+private val _bitmap : MutableLiveData<Bitmap> =
         MutableLiveData(Bitmap.createBitmap(1200, 1200, Bitmap.Config.ARGB_8888))
     val bitmap = _bitmap as LiveData<Bitmap>
 
@@ -39,21 +40,22 @@ class DrawingViewModel(private val repository: DrawingRepository): ViewModel() {
         this._currentCap.value = currentCap
     }
 
-    val allDrawings: Flow<List<DrawingData>> = repository.allDrawings
-    fun saveDrawing(fileName: String, filePath: String){
-        Log.e("VM", "Saving drawing $fileName")
-        repository.saveDrawing(fileName, filePath)
-    }
 
+//    val allDrawings: Flow<List<DrawingData>> = repository.allDrawings
+//    fun saveDrawing(fileName: String, filePath: String){
+//        Log.e("VM", "Saving drawing $fileName")
+//        repository.saveDrawing(fileName, filePath)
+//    }
+//
 }
-
-// This factory class allows us to define custom constructors for the view model
-class DrawingViewModelFactory(private val repository: DrawingRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(DrawingViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return DrawingViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
+//
+//// This factory class allows us to define custom constructors for the view model
+//class DrawingViewModelFactory(private val repository: DrawingRepository) : ViewModelProvider.Factory {
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        if (modelClass.isAssignableFrom(DrawingViewModel::class.java)) {
+//            @Suppress("UNCHECKED_CAST")
+//            return DrawingViewModel(repository) as T
+//        }
+//        throw IllegalArgumentException("Unknown ViewModel class")
+//    }
+//}

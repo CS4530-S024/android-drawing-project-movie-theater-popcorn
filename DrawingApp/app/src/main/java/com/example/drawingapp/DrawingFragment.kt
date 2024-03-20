@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.drawingapp.databinding.FragmentDrawingBinding
 import kotlin.math.abs
 
@@ -35,6 +36,7 @@ class DrawingFragment : Fragment()
         savedInstanceState: Bundle?
     ): View
     {
+
         binding = FragmentDrawingBinding.inflate(layoutInflater)
 
         viewModel.setCurrentPen(Pen(Color.RED, 20, Path()))
