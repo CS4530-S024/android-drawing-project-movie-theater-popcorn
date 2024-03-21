@@ -1,5 +1,6 @@
 package com.example.drawingapp
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Base64
 import android.util.Log
 import kotlinx.coroutines.CoroutineScope
@@ -31,5 +32,12 @@ class DrawingRepository(private val scope: CoroutineScope,
             file.createNewFile();
             file.writeText(encodedData);
         }
+    }
+
+    fun loadDrawing(filePath: String): Bitmap {
+        val file = File(filePath)
+        val text = file.readText()
+        val imageBytes = Base64.decode(text, 0)
+        return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
     }
 }

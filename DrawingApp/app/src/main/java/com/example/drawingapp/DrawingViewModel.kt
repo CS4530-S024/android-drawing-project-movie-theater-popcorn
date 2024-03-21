@@ -3,7 +3,9 @@ package com.example.drawingapp
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.os.Environment
 import android.util.Log
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +16,7 @@ class DrawingViewModel(private val repository: DrawingRepository): ViewModel() {
 //class DrawingViewModel(): ViewModel() {
 private val _bitmap : MutableLiveData<Bitmap> =
         MutableLiveData(Bitmap.createBitmap(1200, 1200, Bitmap.Config.ARGB_8888))
-    val bitmap = _bitmap as LiveData<Bitmap>
+    var bitmap = _bitmap as LiveData<Bitmap>
 
     private val _bitmapCanvas : MutableLiveData<Canvas> = MutableLiveData(Canvas(bitmap.value!!))
     val bitmapCanvas = _bitmapCanvas as LiveData<Canvas>
@@ -47,6 +49,12 @@ private val _bitmap : MutableLiveData<Bitmap> =
     fun saveDrawing(fileName: String, filePath: String){
         Log.e("VM", "Saving drawing $fileName")
         repository.saveDrawing(fileName, filePath, bitmap.value!!)
+    }
+
+    fun loadDrawing(filePath: String) {
+        val newBitmap = repository.loadDrawing(filePath)
+        _bitmap.value = newBitmap.copy(Bitmap.Config.ARGB_8888, true)
+        _bitmapCanvas.value = Canvas(bitmap.value!!)
     }
 
 }
