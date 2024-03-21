@@ -40,11 +40,13 @@ private val _bitmap : MutableLiveData<Bitmap> =
         this._currentCap.value = currentCap
     }
 
-
+    // Use this to get allDrawings inside a composable:
+    // val drawingsList = viewModel.allDrawings.collectAsState(listOf())
     val allDrawings: Flow<List<DrawingData>> = repository.allDrawings
+
     fun saveDrawing(fileName: String, filePath: String){
         Log.e("VM", "Saving drawing $fileName")
-        repository.saveDrawing(fileName, filePath)
+        repository.saveDrawing(fileName, filePath, bitmap.value!!)
     }
 
 }

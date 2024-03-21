@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.activity.viewModels
+import androidx.compose.runtime.collectAsState
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -87,6 +88,11 @@ class DrawingFragment : Fragment()
         binding.shapeButton3.setOnClickListener{
             viewModel.setCurrentCap(Paint.Cap.BUTT)
             viewModel.setCurrentJoin(Paint.Join.MITER)
+        }
+
+        binding.saveButton.setOnClickListener{
+            context?.filesDir?.let { it1 -> viewModel.saveDrawing(binding.imageName.text.toString(),
+                it1.absolutePath) }
         }
 
         binding.drawView.setOnTouchListener { _, event ->
