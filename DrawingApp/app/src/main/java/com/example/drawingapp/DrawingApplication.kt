@@ -7,10 +7,10 @@ import kotlinx.coroutines.SupervisorJob
 class DrawingApplication : Application() {
 
     //coroutine scope tied to the application lifetime which we can run suspend functions in
-    private val scope = CoroutineScope(SupervisorJob())
+    val scope = CoroutineScope(SupervisorJob())
     //get a reference to the DB singleton
     //val db by lazy {DrawingDatabase.getDatabase(applicationContext)}
-    private val db by lazy {Room.databaseBuilder(
+    val db by lazy {Room.databaseBuilder(
         applicationContext,
         DrawingDatabase::class.java,
         "drawing_database"

@@ -15,7 +15,7 @@ import com.example.drawingapp.databinding.FragmentColorSelectBinding
 
 class ColorSelectDialogFragment : DialogFragment() {
     private lateinit var binding: FragmentColorSelectBinding
-    private val viewModel : DrawingViewModel by activityViewModels()
+    private val viewModel by lazy {(activity as MainActivity).viewModel}
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {

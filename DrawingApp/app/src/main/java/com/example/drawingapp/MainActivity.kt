@@ -2,12 +2,17 @@ package com.example.drawingapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.fragment.app.viewModels
 import com.example.drawingapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()
 {
     private val binding: ActivityMainBinding by lazy {ActivityMainBinding.inflate(layoutInflater)}
+    val viewModel: DrawingViewModel by viewModels{
+        DrawingViewModelFactory((application as DrawingApplication).drawingRepository)}
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)

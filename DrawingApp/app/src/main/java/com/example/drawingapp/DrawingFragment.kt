@@ -12,6 +12,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -26,17 +27,14 @@ class DrawingFragment : Fragment()
     private var mX = 0f // Finger X position
     private var mY = 0f // Finger Y position
     private lateinit var currentPath: Path
-    private val viewModel : DrawingViewModel by activityViewModels()
     private lateinit var currPen: Pen
-
-
+    private val viewModel by lazy {(activity as MainActivity).viewModel}
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View
     {
-
         binding = FragmentDrawingBinding.inflate(layoutInflater)
 
         viewModel.setCurrentPen(Pen(Color.RED, 20, Path()))
