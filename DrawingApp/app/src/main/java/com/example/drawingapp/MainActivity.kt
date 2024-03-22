@@ -1,8 +1,9 @@
 package com.example.drawingapp
 
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
+import androidx.activity.*
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.viewModels
 import com.example.drawingapp.databinding.ActivityMainBinding
@@ -41,4 +42,14 @@ class MainActivity : AppCompatActivity()
 
         setContentView(binding.root)
     }
+}
+
+internal fun Context.findActivity(): ComponentActivity
+{
+    var context = this
+    while (context is ContextWrapper) {
+        if (context is ComponentActivity) return context
+        context = context.baseContext
+    }
+    throw IllegalStateException("Permissions should be called in the context of an Activity")
 }
