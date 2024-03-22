@@ -1,12 +1,15 @@
 package com.example.drawingapp
 
+import android.hardware.lights.Light
+import android.hardware.lights.LightState
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
@@ -21,58 +24,34 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.fragment.findNavController
 import com.example.drawingapp.databinding.FragmentDrawingCompBinding
 
-class DrawingListView : Fragment() {
+@Composable
+fun ExistingDrawingItem(drawing: DrawingData, modifier: Modifier = Modifier)
+{
+    Column {
+        //TODO: Get info from data base
+        //Image(bitmap = "", contentDescription = "")
+        Text(text = drawing.fileName)
+        
+    }
+}
 
+@Composable
+fun ExistingDrawings(drawings: List<DrawingData>, modifier: Modifier = Modifier)
+{
+    Box(modifier){
+        LazyColumn(Modifier.fillMaxWidth()) {
+            items(drawings){ drawing ->
+                ExistingDrawingItem(
+                    drawing = drawing
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        val binding = FragmentDrawingCompBinding.inflate(layoutInflater)
-
-        //ComposeView gives us a `Composable` context to run functions in
-        binding.composeView.setContent {
-            MyComposable(Modifier.padding(16.dp)){
-              //  findNavController().navigate(R.id.action_composableFragment1_to_fragment2)
+                )
             }
         }
-
-        return binding.root
-    }
-
-
-}
-
-@Composable
-fun MyComposable(modifier: Modifier = Modifier,
-    //typically "screen level" composables that need a VM
-    //take it as a parameter with a default value
-    //the viewModel function here works like `by activityViewModels()`
-                 viewModel: DrawingViewModel = viewModel(
-                 ),
-    //take the click handler as a parameter to make this more reusable
-                 onClick: ()->Unit){
-    Column(modifier = modifier.padding(32.dp) ) {
-        //currentCount can be used like an int and when the flow/state
-        //changes it will trigger recomposition of everything that
-        //depends on currentCount
-        //TODO: FIX ME
-       // val currentCount by viewModel.countFlow.collectAsState()
-        //SayHello(currentCount)
-        Button(onClick = onClick) {
-            Text("Click this button!")
-        }
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-fun SayHello(currentCount: Int){
-    Text("Hello!: $currentCount")
-}
-
-@Preview
-@Composable
-fun previewHello(){
-    SayHello(5)
+fun test(){
+    ExistingDrawingItem(drawing = DrawingData("testName", "./somewhere"))
 }
