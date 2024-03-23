@@ -42,7 +42,7 @@ class DrawingFragment : Fragment()
         viewModel.setCurrentCap(Paint.Cap.ROUND)
         viewModel.setCurrentJoin(Paint.Join.ROUND)
 
-        viewModel.bitmapCanvas.value!!.drawColor(Color.WHITE)
+        //viewModel.bitmapCanvas.value!!.drawColor(Color.WHITE)
 
         paint.style = Paint.Style.STROKE
         binding.drawView.setPaint(paint)
