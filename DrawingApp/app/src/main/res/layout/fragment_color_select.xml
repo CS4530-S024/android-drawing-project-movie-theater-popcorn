@@ -97,12 +97,14 @@
             android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@color/white"
             android:text="Old Color" />
 
         <Button
             android:id="@+id/newPenColor"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:text="New Color" />
     </LinearLayout>
 
