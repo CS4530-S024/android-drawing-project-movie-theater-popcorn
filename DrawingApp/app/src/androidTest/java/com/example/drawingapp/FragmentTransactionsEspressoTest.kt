@@ -1,5 +1,8 @@
 package com.example.drawingapp
 
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -16,9 +19,8 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class FragmentTransactionsEspressoTest {
-    @get: Rule
-    val activityRule = ActivityScenarioRule(MainActivity::class.java)
-
+    @get: Rule val activityRule = ActivityScenarioRule(MainActivity::class.java)
+    @get: Rule val composeTestRule = createComposeRule()
     @Test
     fun goToDrawingFragment() {
         //clicks on the new canvas drawing
@@ -48,23 +50,26 @@ class FragmentTransactionsEspressoTest {
 
     @Test
     fun onTheExistingDrawingFragment() {
+        clickButton(R.id.newCanvasButton)
+        clickButton(R.id.backButton)
         //checks if we are on the home screen
         onView(withText("Pick Existing Drawing")).check(matches(isDisplayed()))
         componentExistCheck(R.id.existingDrawing)
         clickButton(R.id.existingDrawing)
-        onView(withText("Go Back"))
-        componentExistCheck(R.id.action_go_back_to_home_screen)
+        composeTestRule.onNodeWithText("Go Back").assertExists()
     }
 
     @Test
     fun onToTheHomeScreenFromExistingDrawingFragment() {
+        clickButton(R.id.newCanvasButton)
+        clickButton(R.id.backButton)
         //checks if we are on the home screen
         onView(withText("Pick Existing Drawing")).check(matches(isDisplayed()))
         componentExistCheck(R.id.existingDrawing)
         clickButton(R.id.existingDrawing)
-        onView(withText("Go Back"))
-        componentExistCheck(R.id.action_go_back_to_home_screen)
-        clickButton(R.id.action_go_back_to_home_screen)
+//        onView(withText("Go Back"))
+        composeTestRule.onNodeWithText("Go Back").assertExists()
+        composeTestRule.onNodeWithText("Go Back").performClick()
         onView(withText("Pick Existing Drawing")).check((matches(isDisplayed())))
     }
 
