@@ -99,6 +99,9 @@ class DrawingFragment : Fragment()
                     )
                 }
                 viewModel.setCurrentDrawingName(binding.imageName.text.toString())
+                Toast.makeText(
+                    activity, "Saved!",
+                    Toast.LENGTH_LONG).show();
             }
             else {
                 Toast.makeText(

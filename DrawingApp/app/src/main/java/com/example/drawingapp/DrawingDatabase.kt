@@ -52,4 +52,10 @@ interface DrawingDAO {
 
     @Query("SELECT * from drawing")
     fun allDrawings() : Flow<List<DrawingData>>
+
+    @Query("DELETE FROM drawing WHERE fileName = :fileName")
+    fun deleteDrawing(fileName: String)
+
+    @Query("SELECT EXISTS(SELECT * FROM drawing WHERE fileName = :fileName)")
+    fun drawingIsStored(fileName : String) : Boolean
 }
