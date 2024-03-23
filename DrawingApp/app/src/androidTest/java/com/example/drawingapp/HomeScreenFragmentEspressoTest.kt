@@ -1,10 +1,13 @@
 package com.example.drawingapp
 
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithText
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
@@ -15,8 +18,8 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class CanvasEspressoTest {
-    @get: Rule
-    val activityRule = ActivityScenarioRule(MainActivity::class.java)
+    @get: Rule val activityRule = ActivityScenarioRule(MainActivity::class.java)
+    @get:Rule val composeTestRule = createComposeRule()
 
     @Test
     fun goToDrawingFragment() {
@@ -27,10 +30,10 @@ class CanvasEspressoTest {
         componentExistCheck(R.id.saveButton)
     }
 
-    //TODO: Create test: Check new drawing button exists
-    //TODO: Create test: Check existing drawing exists
-    //TODO: Create test: Navigation test when click on new drawing button
-    //TODO: Create test: Navigation test when click on saved drawing
+    //Test: Check new drawing button exists
+    //Test: Check existing drawing exists
+    //Test: Navigation test when click on new drawing button
+    //Test: Navigation test when click on existing drawing button
     @Test
     fun checkNewDrawingButtonExists() {
         componentExistCheck(R.id.newCanvasButton)
@@ -38,7 +41,6 @@ class CanvasEspressoTest {
     @Test
     fun checkExistingDrawingExists() {
         componentExistCheck(R.id.existingDrawing)
-
     }
     @Test
     fun checkNewDrawingButton() {
@@ -47,7 +49,10 @@ class CanvasEspressoTest {
     }
     @Test
     fun checkExistingDrawingButton() {
-        TODO("not yet implemented")
+        clickButton(R.id.newCanvasButton)
+        clickButton(R.id.backButton)
+        clickButton(R.id.existingDrawing)
+        composeTestRule.onNodeWithText("Go Back").assertExists()
     }
 
     /***

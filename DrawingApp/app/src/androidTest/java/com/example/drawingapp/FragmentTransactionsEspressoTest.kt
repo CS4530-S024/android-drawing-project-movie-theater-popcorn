@@ -46,6 +46,28 @@ class FragmentTransactionsEspressoTest {
         componentExistCheck(R.id.newCanvasButton)
     }
 
+    @Test
+    fun onTheExistingDrawingFragment() {
+        //checks if we are on the home screen
+        onView(withText("Pick Existing Drawing")).check(matches(isDisplayed()))
+        componentExistCheck(R.id.existingDrawing)
+        clickButton(R.id.existingDrawing)
+        onView(withText("Go Back"))
+        componentExistCheck(R.id.action_go_back_to_home_screen)
+    }
+
+    @Test
+    fun onToTheHomeScreenFromExistingDrawingFragment() {
+        //checks if we are on the home screen
+        onView(withText("Pick Existing Drawing")).check(matches(isDisplayed()))
+        componentExistCheck(R.id.existingDrawing)
+        clickButton(R.id.existingDrawing)
+        onView(withText("Go Back"))
+        componentExistCheck(R.id.action_go_back_to_home_screen)
+        clickButton(R.id.action_go_back_to_home_screen)
+        onView(withText("Pick Existing Drawing")).check((matches(isDisplayed())))
+    }
+
     /***
      * Helper methods
      */
