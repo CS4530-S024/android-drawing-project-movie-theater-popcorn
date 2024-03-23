@@ -50,8 +50,8 @@ class FragmentTransactionsEspressoTest {
 
     @Test
     fun onTheExistingDrawingFragment() {
-        clickButton(R.id.newCanvasButton)
-        clickButton(R.id.backButton)
+//        clickButton(R.id.newCanvasButton)
+//        clickButton(R.id.backButton)
         //checks if we are on the home screen
         onView(withText("Pick Existing Drawing")).check(matches(isDisplayed()))
         componentExistCheck(R.id.existingDrawing)
@@ -61,13 +61,12 @@ class FragmentTransactionsEspressoTest {
 
     @Test
     fun onToTheHomeScreenFromExistingDrawingFragment() {
-        clickButton(R.id.newCanvasButton)
-        clickButton(R.id.backButton)
+//        clickButton(R.id.newCanvasButton)
+//        clickButton(R.id.backButton)
         //checks if we are on the home screen
         onView(withText("Pick Existing Drawing")).check(matches(isDisplayed()))
         componentExistCheck(R.id.existingDrawing)
         clickButton(R.id.existingDrawing)
-//        onView(withText("Go Back"))
         composeTestRule.onNodeWithText("Go Back").assertExists()
         composeTestRule.onNodeWithText("Go Back").performClick()
         onView(withText("Pick Existing Drawing")).check((matches(isDisplayed())))

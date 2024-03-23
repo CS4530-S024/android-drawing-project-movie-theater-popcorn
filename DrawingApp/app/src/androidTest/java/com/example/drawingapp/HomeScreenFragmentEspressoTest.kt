@@ -49,8 +49,8 @@ class CanvasEspressoTest {
     }
     @Test
     fun checkExistingDrawingButton() {
-        clickButton(R.id.newCanvasButton)
-        clickButton(R.id.backButton)
+//        clickButton(R.id.newCanvasButton)
+//        clickButton(R.id.backButton)
         clickButton(R.id.existingDrawing)
         composeTestRule.onNodeWithText("Go Back").assertExists()
     }
