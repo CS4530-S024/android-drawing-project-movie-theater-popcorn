@@ -35,7 +35,7 @@ class DrawingListView : Fragment() {
         //ComposeView gives us a `Composable` context to run functions in
         binding.composeView.setContent {
             DrawingComposable(Modifier.padding(16.dp)){
-//                findNavController().navigate(R.id.existingDrawing)
+                findNavController().navigate(R.id.action_go_back_to_home_screen)
             }
         }
 
