@@ -35,7 +35,7 @@ class DrawingListView : Fragment() {
         //ComposeView gives us a `Composable` context to run functions in
         binding.composeView.setContent {
             DrawingComposable(Modifier.padding(16.dp)){
-                findNavController().navigate(R.id.existingDrawing)
+//                findNavController().navigate(R.id.existingDrawing)
             }
         }
 
@@ -50,28 +50,28 @@ class DrawingListView : Fragment() {
                           ),
                           onClick: ()->Unit)
     {
-//        Column(modifier = modifier.padding(32.dp)) {
-//            val currentDrawings by viewModel.allDrawings.collectAsState(listOf())
+        Column(modifier = modifier.padding(32.dp)) {
+            val currentDrawings by viewModel.allDrawings.collectAsState(listOf())
 //            ExistingDrawings(drawings = currentDrawings, modifier)
 //            Button(onClick = { /*TODO*/ }) {
 //
 //            }
-//        }
+        }
         val currentDrawings by viewModel.allDrawings.collectAsState(listOf())
        // val bitmap = viewModel.loadDrawing(drawing)
         Box(modifier){
             Button(onClick = onClick) {
             Text("Go Back")
         }
-            LazyColumn(Modifier.fillMaxWidth()) {
-                items(currentDrawings){ drawing ->
-                    viewModel.loadDrawing(drawing.filePath)
-                    ExistingDrawingItem(
-                        drawing = drawing,
-                        bitmap = viewModel.bitmap.value
-                    )
-                }
-            }
+//            LazyColumn(Modifier.fillMaxWidth()) {
+//                items(currentDrawings){ drawing ->
+//                    viewModel.loadDrawing(drawing.filePath)
+//                    ExistingDrawingItem(
+//                        drawing = drawing,
+//                        bitmap = viewModel.bitmap.value
+//                    )
+//                }
+//            }
         }
     }
 
