@@ -21,25 +21,6 @@ class MainActivity : AppCompatActivity()
         Thread.sleep(2000)
         installSplashScreen()
 
-//        setContentView(R.layout.activity_main)
-
-//        val homeFrag = HomeScreenFragment()
-//        homeFrag.setListener(){
-//                val fragDraw = DrawingFragment()
-//                fragDraw.setListener {
-//                    supportFragmentManager.popBackStack()
-//                }
-//
-//                val fTrans = supportFragmentManager.beginTransaction()
-//                fTrans.replace(R.id.fragmentContainerView, fragDraw)
-//                fTrans.addToBackStack(null)
-//                fTrans.commit()
-//        }
-//
-//        val fTrans = supportFragmentManager.beginTransaction()
-//        fTrans.replace(R.id.fragmentContainerView, homeFrag)
-//        fTrans.commit()
-
         setContentView(binding.root)
     }
 }
