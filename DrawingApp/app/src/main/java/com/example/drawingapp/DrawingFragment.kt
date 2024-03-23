@@ -12,6 +12,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.compose.runtime.collectAsState
 import androidx.fragment.app.activityViewModels
@@ -37,12 +38,11 @@ class DrawingFragment : Fragment()
     ): View
     {
         binding = FragmentDrawingBinding.inflate(layoutInflater)
+        binding.imageName.setText(viewModel.currentDrawingName.value)
 
         viewModel.setCurrentPen(Pen(Color.RED, 20, Path()))
         viewModel.setCurrentCap(Paint.Cap.ROUND)
         viewModel.setCurrentJoin(Paint.Join.ROUND)
-
-        //viewModel.bitmapCanvas.value!!.drawColor(Color.WHITE)
 
         paint.style = Paint.Style.STROKE
         binding.drawView.setPaint(paint)
@@ -91,8 +91,20 @@ class DrawingFragment : Fragment()
         }
 
         binding.saveButton.setOnClickListener{
-            context?.filesDir?.let { it1 -> viewModel.saveDrawing(binding.imageName.text.toString(),
-                it1.absolutePath) }
+            if(binding.imageName.text.toString() != "") {
+                context?.filesDir?.let { it1 ->
+                    viewModel.saveDrawing(
+                        binding.imageName.text.toString(),
+                        it1.absolutePath
+                    )
+                }
+                viewModel.setCurrentDrawingName(binding.imageName.text.toString())
+            }
+            else {
+                Toast.makeText(
+                    activity, "Please enter a name before saving",
+                    Toast.LENGTH_LONG).show();
+            }
         }
 
         binding.drawView.setOnTouchListener { _, event ->

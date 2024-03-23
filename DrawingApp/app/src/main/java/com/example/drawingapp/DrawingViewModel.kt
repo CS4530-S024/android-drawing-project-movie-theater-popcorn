@@ -30,6 +30,13 @@ private val _bitmap : MutableLiveData<Bitmap> =
     private val _currentCap = MutableLiveData<Paint.Cap>()
     var currentCap = _currentCap as LiveData<Paint.Cap>
 
+    private val _currentDrawingName = MutableLiveData<String>("")
+    val currentDrawingName = _currentDrawingName as LiveData<String>
+
+    fun setCurrentDrawingName(newName: String) {
+        this._currentDrawingName.value = newName
+    }
+
     fun setCurrentPen(currentPen: Pen) {
         this._currentPen.value = currentPen
     }
