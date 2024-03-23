@@ -38,25 +38,25 @@ class DrawingFragmentEspressoTest {
     /***
      * Checks that all the components exist on the Drawing Fragments
      */
-    //TODO: Create test: Navigation to the Drawing fragment
-    //TODO: Create test: check the canvas exists
-    //TODO: Create test: check if the canvas name is on the drawing Fragment
-    //TODO: Create test: check if the eraser button is on the screen
-    //TODO: Create test: check back button exists
-    //TODO: Create test: check the save button exists
-    //TODO: Create test: check the more colors button exists
-    //TODO: Create test: check the pen shape button exists
-    //TODO: Create test: check the sliders (RGB) for the pen color exist
-    //TODO: Create test: check label exists for each color (RGB) slider exist
-    //TODO: Create test: check number value label exists for each color (RGB) slider exist
-    //TODO: Create test: check the size slider for the pen exists
+    //Test: Navigation test when click on a saved drawing and directs to the canvas page
+    //Test: Navigation to the Drawing fragment
+    //Test: check the canvas exists
+    //Test: check if the canvas name is on the drawing Fragment
+    //Test: check if the eraser button is on the screen
+    //Test: check back button exists
+    //Test: check the save button exists
+    //Test: check the more colors button exists
+    //Test: check the pen shape button exists
+    //Test: check the sliders (RGB) for the pen color exist
+    //Test: check label exists for each color (RGB) slider exist
+    //Test: check number value label exists for each color (RGB) slider exist
+    //Test: check the size slider for the pen exists
 
     @Test
     fun goToDrawingFragment() {
         //checks if Save text is on the current Screen to verify we are on the Drawing Fragment
         createNewDrawing()
     }
-
     @Test
     fun checkCanvasExist() {
         createNewDrawing()
@@ -65,9 +65,7 @@ class DrawingFragmentEspressoTest {
     @Test
     fun checkNewDrawingNameExist() {
         createNewDrawing()
-//        onView(withText(drawingName)).check(matches(isDisplayed()))
         componentExistCheck(R.id.imageName)
-//        onView(withId(R.id.imageName)).check(matches())
     }
     @Test
     fun checkExistingDrawingNameExist() {
@@ -78,34 +76,27 @@ class DrawingFragmentEspressoTest {
     @Test
     fun checkEraserButtonExist() {
         createNewDrawing()
-//        onView(withText("eraser")).check(matches(isDisplayed()))
         componentExistCheck(R.id.eraserButton)
     }
 
     @Test
     fun checkBackButtonExist() {
         createNewDrawing()
-//        onView(withText("Back to Main")).check(matches(isDisplayed()))
         componentExistCheck(R.id.backButton)
     }
     @Test
     fun checkSaveButtonExist() {
         createNewDrawing()
-//        onView(withText("Save")).check(matches(isDisplayed()))
         componentExistCheck(R.id.saveButton)
     }
-
     @Test
     fun checkColorButtonExist() {
         createNewDrawing()
-//        onView(withText("More Colors")).check(matches(isDisplayed()))
         componentExistCheck(R.id.colorSelectButton)
     }
-
     @Test
     fun checkPenShapeButtonExist() {
         createNewDrawing()
-//        onView(withText("Pen")).check(matches(isDisplayed()))
         componentExistCheck(R.id.penButton)
     }
     @Test
