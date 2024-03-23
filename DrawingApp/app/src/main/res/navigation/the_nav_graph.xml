@@ -14,14 +14,22 @@
             app:destination="@+id/fragment_drawing" />
         <action
             android:id="@+id/existingDrawing"
-            app:destination="@+id/fragment_drawing" />
+            app:destination="@+id/fragment_drawing_comp" />
     </fragment>
     <fragment
         android:id="@+id/fragment_drawing"
         android:name="com.example.drawingapp.DrawingFragment"
-        android:label="fragment_home_screen">
+        android:label="goback_button">
         <action
             android:id="@+id/backButton"
             app:destination="@+id/fragment_home_screen" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_drawing_comp"
+        android:name="com.example.drawingapp.DrawingListView"
+        android:label="drawing_comp" >
+        <action
+            android:id="@+id/"
+
     </fragment>
 </navigation>
