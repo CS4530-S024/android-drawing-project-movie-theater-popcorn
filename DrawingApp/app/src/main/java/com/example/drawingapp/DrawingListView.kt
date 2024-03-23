@@ -2,6 +2,7 @@ package com.example.drawingapp
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,12 +31,11 @@ class DrawingListView : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val binding = FragmentDrawingCompBinding.inflate(layoutInflater)
-        val viewModel: DrawingViewModel by activityViewModels()
+        val viewModel: DrawingViewModel by lazy {(activity as MainActivity).viewModel}
         //ComposeView gives us a `Composable` context to run functions in
         binding.composeView.setContent {
             DrawingComposable(Modifier.padding(16.dp), viewModel = viewModel,
                 onClick = { findNavController().navigate(R.id.action_go_back_to_home_screen) }) {
-
                     findNavController().navigate(R.id.action_open_saved_drawing)
             }
         }
@@ -53,18 +53,17 @@ class DrawingListView : Fragment() {
     {
 
         val currentDrawings by viewModel.allDrawings.collectAsState(listOf())
-       // val bitmap = viewModel.loadDrawing(drawing)
         Box(modifier){
             Button(onClick = onClick) {
             Text("Go Back")
         }
             LazyColumn(Modifier.fillMaxWidth()) {
                 items(currentDrawings){ drawing ->
-//                    viewModel.loadDrawing(drawing.filePath)
                    ExistingDrawingItem(
                        drawing = drawing,
                        bitmap = viewModel.bitmap.value,
-                       onClick = onClickFile
+                       onClick = onClickFile,
+                       viewModel = viewModel
                     )
                 }
             }
@@ -72,7 +71,13 @@ class DrawingListView : Fragment() {
     }
 
     @Composable
-    fun ExistingDrawingItem(drawing: DrawingData, modifier: Modifier = Modifier, bitmap: Bitmap?, onClick: () -> Unit)
+    fun ExistingDrawingItem(
+        drawing: DrawingData,
+        modifier: Modifier = Modifier,
+        bitmap: Bitmap?,
+        onClick: () -> Unit,
+        viewModel: DrawingViewModel
+    )
     {
         Row {
 
@@ -80,9 +85,10 @@ class DrawingListView : Fragment() {
             {
                 Image(painter = painterResource(id = R.drawable.ic_color_palete), contentDescription = "")
             }
-            Button(onClick = onClick) {
+            Log.d("File path","${drawing.filePath}")
+            Button(onClick = { onClick.invoke()
+                viewModel.loadDrawing(drawing.filePath)}) {
                 Text(text = drawing.fileName)
-
             }
 
         }
