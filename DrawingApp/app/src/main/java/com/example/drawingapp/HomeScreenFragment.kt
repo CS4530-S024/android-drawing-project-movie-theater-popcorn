@@ -1,5 +1,6 @@
 package com.example.drawingapp
 
+import android.graphics.*
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,9 +24,10 @@ class HomeScreenFragment : Fragment()
     ): View
     {
         binding = FragmentHomeScreenBinding.inflate(layoutInflater)
-
+        val viewModel by lazy { (activity as MainActivity).viewModel }
         binding.newCanvasButton.setOnClickListener{
             findNavController().navigate(R.id.newCanvasButton)
+            viewModel.bitmapCanvas.value!!.drawColor(Color.WHITE)
         }
 
         binding.existingDrawing.setOnClickListener{

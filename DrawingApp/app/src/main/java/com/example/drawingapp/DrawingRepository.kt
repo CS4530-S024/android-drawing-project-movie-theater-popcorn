@@ -18,7 +18,7 @@ class DrawingRepository(private val scope: CoroutineScope,
     fun saveDrawing(fileName: String, filePath: String, bitmap: Bitmap) {
         scope.launch {
             Log.e("REPO", "Saving drawing $fileName")
-            val savedDrawing = DrawingData(fileName, filePath)
+            val savedDrawing = DrawingData(fileName, filePath + "/${fileName}")
             dao.addDrawingData(savedDrawing)
 
             //Convert bitmap to byte array
