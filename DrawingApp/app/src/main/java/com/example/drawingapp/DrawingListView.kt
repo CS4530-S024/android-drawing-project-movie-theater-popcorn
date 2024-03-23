@@ -2,7 +2,6 @@ package com.example.drawingapp
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.*
 import androidx.compose.ui.unit.dp
+import androidx.fragment.app.*
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.fragment.findNavController
 import com.example.drawingapp.databinding.FragmentDrawingCompBinding
@@ -30,11 +30,12 @@ class DrawingListView : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val binding = FragmentDrawingCompBinding.inflate(layoutInflater)
-
+        val viewModel: DrawingViewModel by activityViewModels()
         //ComposeView gives us a `Composable` context to run functions in
         binding.composeView.setContent {
-            DrawingComposable(Modifier.padding(16.dp),
+            DrawingComposable(Modifier.padding(16.dp), viewModel = viewModel,
                 onClick = { findNavController().navigate(R.id.action_go_back_to_home_screen) }) {
+
                     findNavController().navigate(R.id.action_open_saved_drawing)
             }
         }
@@ -59,7 +60,7 @@ class DrawingListView : Fragment() {
         }
             LazyColumn(Modifier.fillMaxWidth()) {
                 items(currentDrawings){ drawing ->
- //                   viewModel.loadDrawing(drawing.filePath)
+//                    viewModel.loadDrawing(drawing.filePath)
                    ExistingDrawingItem(
                        drawing = drawing,
                        bitmap = viewModel.bitmap.value,
