@@ -18,6 +18,10 @@ class DrawingRepository(private val scope: CoroutineScope,
     fun saveDrawing(fileName: String, filePath: String, bitmap: Bitmap) {
         scope.launch {
             Log.e("REPO", "Saving drawing $fileName")
+            if(dao.drawingIsStored(fileName))
+            {
+                dao.deleteDrawing(fileName)
+            }
             val savedDrawing = DrawingData(fileName, filePath + "/${fileName}")
             dao.addDrawingData(savedDrawing)
 
