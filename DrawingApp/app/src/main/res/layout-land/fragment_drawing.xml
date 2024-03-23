@@ -58,15 +58,15 @@
         android:layout_height="127dp"
         android:layout_marginStart="7dp"
         android:layout_marginEnd="204dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/draw_view"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drawingToolsLayout">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/penButton"
-            android:layout_width="71dp"
+            android:layout_width="65dp"
             android:layout_height="64dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="7dp"
@@ -80,11 +80,12 @@
             android:layout_width="70dp"
             android:layout_height="63dp"
             android:layout_marginStart="31dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:scaleType="fitCenter"
             android:src="@drawable/eraser"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/penButton"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -105,8 +106,8 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="59dp"
-            android:layout_height="23dp"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
             android:layout_marginStart="72dp"
             android:layout_marginTop="70dp"
             android:layout_marginEnd="71dp"
@@ -120,8 +121,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="397dp"
-        android:layout_height="91dp"
+        android:layout_width="398dp"
+        android:layout_height="79dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toTopOf="@+id/drawingToolsLayout"
@@ -201,8 +202,8 @@
 
     <com.example.drawingapp.DrawView
         android:id="@+id/draw_view"
-        android:layout_width="424dp"
-        android:layout_height="402dp"
+        android:layout_width="396dp"
+        android:layout_height="374dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="6dp"
@@ -210,6 +211,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.607" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
