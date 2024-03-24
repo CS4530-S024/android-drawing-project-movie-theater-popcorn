@@ -1,6 +1,6 @@
 package com.example.drawingapp
 
-import android.graphics.Bitmap
+import android.graphics.*
 import android.os.Bundle
 import android.util.*
 import android.view.LayoutInflater
@@ -14,8 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.*
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.*
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.*
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -57,11 +57,12 @@ class DrawingListView : Fragment() {
             Button(onClick = onClick) {
             Text("Go Back")
         }
-            LazyColumn(Modifier.fillMaxWidth()) {
+            LazyColumn(Modifier.padding(35.dp)) {
                 items(currentDrawings){ drawing ->
+                    viewModel.loadDrawing(drawing.filePath)
                    ExistingDrawingItem(
                        drawing = drawing,
-                       bitmap = viewModel.bitmap.value,
+                       bitmap = viewModel.bitmap.value!!,
                        onClick = onClickFile,
                        viewModel = viewModel
                     )
@@ -74,22 +75,26 @@ class DrawingListView : Fragment() {
     fun ExistingDrawingItem(
         drawing: DrawingData,
         modifier: Modifier = Modifier,
-        bitmap: Bitmap?,
+        bitmap: Bitmap,
         onClick: () -> Unit,
         viewModel: DrawingViewModel
     )
     {
-        Row {
+        Row(Modifier.padding(16.dp)) {
+           Card {
+                Image(
+                    bitmap = bitmap.asImageBitmap(),
+                    contentDescription = ""
+                )
 
-            if (bitmap != null)
-            {
-                Image(painter = painterResource(id = R.drawable.ic_color_palete), contentDescription = "")
-            }
-            Log.d("File path","${drawing.filePath}")
-            Button(onClick = { onClick.invoke()
-                viewModel.loadDrawing(drawing.filePath)
-                viewModel.setCurrentDrawingName(drawing.fileName)}) {
-                Text(text = drawing.fileName)
+                Log.d("File path", "${drawing.filePath}")
+                Button(onClick = {
+                    onClick.invoke()
+                    viewModel.loadDrawing(drawing.filePath)
+                    viewModel.setCurrentDrawingName(drawing.fileName)
+                }) {
+                    Text(text = drawing.fileName)
+                }
             }
 
         }

@@ -30,6 +30,8 @@ class DrawingFragment : Fragment()
     private var mY = 0f // Finger Y position
     private lateinit var currentPath: Path
     private lateinit var currPen: Pen
+    private var eraserOn = false
+    private var colorBeforeErase = 0
     private val viewModel by lazy {(activity as MainActivity).viewModel}
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
@@ -73,6 +75,25 @@ class DrawingFragment : Fragment()
         binding.colorSelectButton.setOnClickListener{
             ColorSelectDialogFragment().show(
                 childFragmentManager, ColorSelectDialogFragment.TAG)
+        }
+
+        binding.penButton.setOnClickListener{
+            if(eraserOn)
+            {
+                binding.colorSelectButton.setEnabled(true)
+                viewModel.currentPen.value!!.color = colorBeforeErase
+                eraserOn = false
+            }
+        }
+
+        binding.eraserButton.setOnClickListener{
+            if(!eraserOn)
+            {
+                binding.colorSelectButton.setEnabled(false)
+                colorBeforeErase = viewModel.currentPen.value!!.color
+                viewModel.currentPen.value!!.color = Color.WHITE
+                eraserOn = true
+            }
         }
 
         binding.shapeButton1.setOnClickListener{
