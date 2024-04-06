@@ -50,6 +50,13 @@ class DrawingFragment : Fragment()
         binding.drawView.setPaint(paint)
         binding.drawView.setBitmap(viewModel.bitmap.value!!)
 
+        viewModel.currentPen.observe(viewLifecycleOwner) {
+            paint.color = viewModel.currentPen.value!!.color
+            paint.strokeWidth = viewModel.currentPen.value!!.strokeWidth.toFloat()
+            paint.strokeCap = viewModel.currentCap.value!!
+            paint.strokeJoin = viewModel.currentJoin.value!!
+        }
+
         //Goes back to the main screen
         binding.backButton.setOnClickListener{
             findNavController().navigate(R.id.backButton)
@@ -192,11 +199,6 @@ class DrawingFragment : Fragment()
         Log.d("DrawingFragment", "DRAWING PATH")
 
         val currentPen = viewModel.currentPen.value!!
-        paint.color = currentPen.color
-        paint.strokeWidth = currentPen.strokeWidth.toFloat()
-        paint.strokeCap = viewModel.currentCap.value!!
-        paint.strokeJoin = viewModel.currentJoin.value!!
-
         viewModel.bitmapCanvas.value!!.drawPath(currentPen.path, paint)
 
         binding.drawView.setBitmap(viewModel.bitmap.value!!)
