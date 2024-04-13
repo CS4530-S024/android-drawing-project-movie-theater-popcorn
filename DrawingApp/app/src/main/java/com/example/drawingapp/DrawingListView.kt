@@ -13,9 +13,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.*
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.*
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.*
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -51,6 +51,7 @@ class DrawingListView : Fragment() {
                           ),
                           onClick: ()->Unit, onClickFile: () -> Unit)
     {
+        val configuration = LocalConfiguration.current
 
         val currentDrawings by viewModel.allDrawings.collectAsState(listOf())
         Box(modifier){
