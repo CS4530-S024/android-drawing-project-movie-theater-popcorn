@@ -24,11 +24,11 @@ class MainActivity : AppCompatActivity()
         setContentView(binding.root)
     }
 
-    companion object {
-      init {
-         System.loadLibrary("blurDrawing")
-      }
-    }
+//    companion object {
+//      init {
+//         System.loadLibrary("blurDrawing")
+//      }
+//    }
 }
 
 internal fun Context.findActivity(): ComponentActivity
