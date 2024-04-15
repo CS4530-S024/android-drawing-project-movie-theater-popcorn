@@ -49,4 +49,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homeTitle" />
+
+    <Button
+        android:id="@+id/ViewSharedDrawingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="271dp"
+        android:layout_marginBottom="25dp"
+        android:text="View Shared Drawings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newCanvasButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

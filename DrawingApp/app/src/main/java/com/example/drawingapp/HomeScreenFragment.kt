@@ -35,6 +35,10 @@ class HomeScreenFragment : Fragment()
             findNavController().navigate(R.id.existingDrawing)
         }
 
+        binding.ViewSharedDrawingsButton.setOnClickListener{
+            findNavController().navigate(R.id.action_fragment_home_screen_to_sharedDrawingsFragment)
+        }
+
         // Inflate the layout for this fragment
         return binding.root
     }
