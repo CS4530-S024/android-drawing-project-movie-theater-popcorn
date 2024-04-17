@@ -50,6 +50,13 @@
             android:layout_weight="1"
             android:text="Swoop" />
 
+        <Button
+            android:id="@+id/invertButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
