@@ -33,6 +33,9 @@ private val _bitmap : MutableLiveData<Bitmap> =
     private val _currentDrawingName = MutableLiveData<String>("")
     val currentDrawingName = _currentDrawingName as LiveData<String>
 
+    private external fun invertBitmap(bitmapDrawing: Bitmap)
+
+
     fun setCurrentDrawingName(newName: String) {
         this._currentDrawingName.value = newName
     }
@@ -62,6 +65,10 @@ private val _bitmap : MutableLiveData<Bitmap> =
         val newBitmap = repository.loadDrawing(filePath)
         _bitmap.value = newBitmap.copy(Bitmap.Config.ARGB_8888, true)
         _bitmapCanvas.value = Canvas(bitmap.value!!)
+    }
+
+    fun invertDrawing() {
+        invertBitmap(_bitmap.value!!)
     }
 
 }
