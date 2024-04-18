@@ -100,6 +100,9 @@ class SharedDrawingsFragment : Fragment() {
                     }
 
                 }
+                else {
+
+                }
             }
         }
 

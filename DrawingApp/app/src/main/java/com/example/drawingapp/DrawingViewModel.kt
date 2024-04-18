@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.flow.Flow
 
 class DrawingViewModel(private val repository: DrawingRepository): ViewModel() {
@@ -30,7 +31,7 @@ private val _bitmap : MutableLiveData<Bitmap> =
     private val _currentCap = MutableLiveData<Paint.Cap>()
     var currentCap = _currentCap as LiveData<Paint.Cap>
 
-    private val _currentDrawingName = MutableLiveData<String>("")
+    private val _currentDrawingName = MutableLiveData("")
     val currentDrawingName = _currentDrawingName as LiveData<String>
 
     fun setCurrentDrawingName(newName: String) {
