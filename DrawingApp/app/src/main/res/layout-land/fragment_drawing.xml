@@ -130,6 +130,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+            android:id="@+id/shareButton"
+            android:layout_width="122dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:text="Share"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/saveButton" />
+
         <EditText
             android:id="@+id/imageName"
             android:layout_width="179dp"
@@ -147,28 +156,14 @@
             android:id="@+id/saveButton"
             android:layout_width="60dp"
             android:layout_height="58dp"
-            android:layout_marginStart="25dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="11dp"
             android:src="@drawable/ic_save"
             android:text="Save"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/backButton"
-            app:layout_constraintStart_toEndOf="@+id/imageName"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="97dp"
-            android:layout_height="59dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="9dp"
-            android:text="Back to Main"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/saveButton"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.333" />
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="198dp" />
 
         <ImageButton
             android:id="@+id/imageButton2"
@@ -198,6 +193,14 @@
             app:layout_constraintStart_toEndOf="@+id/imageButton2"
             app:layout_constraintTop_toBottomOf="@+id/imageName"
             app:layout_constraintVertical_bias="0.538" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="134dp"
+            android:layout_height="38dp"
+            android:text="Back to Main"
+            app:layout_constraintBottom_toTopOf="@+id/shareButton"
+            app:layout_constraintStart_toEndOf="@+id/saveButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.example.drawingapp.DrawView

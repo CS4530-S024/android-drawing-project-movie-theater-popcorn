@@ -162,6 +162,11 @@ class DrawingFragment : Fragment()
             true
         }
 
+        binding.shareButton.setOnClickListener{
+            ShareDrawingFragment().show(
+                childFragmentManager, ShareDrawingFragment.TAG)
+        }
+
         // Inflate the layout for this fragment
         return binding.root
     }
