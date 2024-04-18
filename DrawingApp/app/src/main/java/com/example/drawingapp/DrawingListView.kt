@@ -89,13 +89,23 @@ class DrawingListView : Fragment() {
                 )
 
                 Log.d("File path", "${drawing.filePath}")
-                Button(onClick = {
+
+               Button(onClick = {
                     onClick.invoke()
                     viewModel.loadDrawing(drawing.filePath)
                     viewModel.setCurrentDrawingName(drawing.fileName)
                 }) {
                     Text(text = drawing.fileName)
                 }
+
+               Button(onClick = {
+//                   onClick.invoke()
+                   //the dialog appears and you can enter the email
+                   ShareDrawingFragment().show(
+                       childFragmentManager, ShareDrawingFragment.TAG)
+               }) {
+                   Text(text = "Share")
+               }
             }
 
         }
