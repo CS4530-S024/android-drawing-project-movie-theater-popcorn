@@ -40,62 +40,90 @@ static int rgb_clamp(int value) {
     return value;
 }
 
-static void brightness(AndroidBitmapInfo* info, void* pixels, float brightnessValue){
-    int xx, yy;
-    const float c = 1.5f;
-    int red, green, blue = 0;
+static void blurring(AndroidBitmapInfo* info, void* pixels){
+    int x, y, counter;
+    const float c = 0.5f;
+    int red, green, blue;
     uint32_t* line;
+    uint32_t* prevLine;
+    uint32_t* nextLine;
 
-//    for(yy = 0; yy < info->height; yy++){
-//        line = (uint32_t*)pixels;
-//        for(xx =0; xx < info->width; xx++){
-//
-//            //extract the RGB values from the pixel
-//            red = (int) ((line[xx] & 0x00FF0000) >> 16);
-//            green = (int)((line[xx] & 0x0000FF00) >> 8);
-//            blue = (int) (line[xx] & 0x00000FF );
-//
-//            //manipulate each value
-//            red = rgb_clamp((int)(red * brightnessValue));
-//            green = rgb_clamp((int)(green * brightnessValue));
-//            blue = rgb_clamp((int)(blue * brightnessValue));
-//
-//            // set the new pixel back in
-//            line[xx] =
-//                    ((red << 16) & 0x00FF0000) |
-//                    ((green << 8) & 0x0000FF00) |
-//                    (blue & 0x000000FF);
-//        }
-//
-//        pixels = (char*)pixels + info->stride;
-//    }
-
-
-    //Blurring inspired by : https://www.youtube.com/watch?v=tvVMLIIG9i0
-    for(int y = 0; y < info->height; y++)
-    {
-        line = (uint32_t*)pixels;
-        for(int x = 0; x < info->width; x++)
+        for (int yy = 0; yy < info->height; yy++)
         {
-            red = red + c * (line[3 * (x + y * info->width)] - red);
-            green = green + c * (line[3 * (x + y * info->width) + 1] - green);
-            blue = blue + c * (line[3 * (x + y * info->width) + 2] - blue);
-            line[line[3 * (x + y * info->width)]] = red;
-            line[line[3 * (x + y * info->width) + 1]] = green;
-            line[line[3 * (x + y * info->width) + 2]] = blue;
+            line = (uint32_t*)pixels;
+            if (yy - 1 >= 0)
+                prevLine = (uint32_t*)((char*)pixels - info->stride);
+            for (int xx = 0; xx < info->width; xx++)
+            {
+                if (yy < info->height)
+                    nextLine = (uint32_t*)((char*)pixels + info->stride);
+                //extract the RGB values from the pixel
+                red = (int) ((line[xx] & 0x00FF0000) >> 16);
+                green = (int)((line[xx] & 0x0000FF00) >> 8);
+                blue = (int) (line[xx] & 0x00000FF );
+                counter=0;
+                if (yy + 1 <info->height && xx - 1 >=0)
+                {
+                    red += red + ((nextLine[xx - 1]& 0x00FF0000) >> 16);
+                    green += green + ((nextLine[xx - 1]& 0x0000FF00) >> 8);
+                    blue += blue + (nextLine[xx - 1] & 0x000000FF);
+                    counter++;
+                }
+                if (xx + 1 < info->width)
+                {
+                    red += red + ((line[xx + 1]& 0x00FF0000) >> 16);
+                    green += green + ((line[xx + 1]& 0x0000FF00) >> 8);
+                    blue += blue + (line[xx + 1] & 0x000000FF);
+                    counter++;
+                }
+                if (yy + 1 < info->height && xx + 1 < info->width)
+                {
+                    red += red + ((nextLine[xx + 1]& 0x00FF0000) >> 16);
+                    green += green + ((nextLine[xx + 1]& 0x0000FF00) >> 8);
+                    blue += blue + (nextLine[xx + 1] & 0x000000FF);
+                    counter++;
+                }
+                if (yy + 1 < info->height)
+                {
+                    red += red + ((nextLine[xx]& 0x00FF0000) >> 16);
+                    green += green + ((nextLine[xx]& 0x0000FF00) >> 8);
+                    blue += blue + (nextLine[xx] & 0x000000FF);
+                    counter++;
+                }
+                if (xx - 1>=0)
+                {
+                    red += red + ((line[xx - 1]& 0x00FF0000) >> 16);
+                    green += green + ((line[xx - 1]& 0x0000FF00) >> 8);
+                    blue += blue + (line[xx - 1] & 0x000000FF);
+                    counter++;
+                }
+                if (yy - 1>=0)
+                {
+                    red += red + ((prevLine[xx]& 0x00FF0000) >> 16);
+                    green += green + ((prevLine[xx]& 0x0000FF00) >> 8);
+                    blue += blue + (prevLine[xx] & 0x000000FF);
+                    counter++;
+                }
+                line[xx] =
+                        (((red/counter) << 16) & 0x00FF0000) |
+                        (((green/counter) << 8) & 0x0000FF00) |
+                        ((blue/counter) & 0x000000FF) | 0xFF000000;
+            }
+            pixels = (char*)pixels + info->stride;
         }
-    }
+
+
 }
 
 
-extern "C" {
-JNIEXPORT void JNICALL Java_com_vm_imageprocessingndkcpp_ImageActivity_brightness(JNIEnv * env, jobject  obj, jobject bitmap, jfloat brightnessValue)
-{
 
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_drawingapp_DrawingViewModel_blurImage(JNIEnv *env, jobject thiz, jobject bitmap) {
     AndroidBitmapInfo  info;
     int ret;
     void* pixels;
-
+    LOGE("Before first if in cpp");
     if ((ret = AndroidBitmap_getInfo(env, bitmap, &info)) < 0) {
         LOGE("AndroidBitmap_getInfo() failed ! error=%d", ret);
         return;
@@ -109,8 +137,7 @@ JNIEXPORT void JNICALL Java_com_vm_imageprocessingndkcpp_ImageActivity_brightnes
         LOGE("AndroidBitmap_lockPixels() failed ! error=%d", ret);
     }
 
-    brightness(&info,pixels, brightnessValue);
+    blurring(&info, pixels);
 
     AndroidBitmap_unlockPixels(env, bitmap);
-}
 }

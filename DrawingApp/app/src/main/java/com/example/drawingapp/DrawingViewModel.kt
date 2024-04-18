@@ -64,6 +64,13 @@ private val _bitmap : MutableLiveData<Bitmap> =
         _bitmapCanvas.value = Canvas(bitmap.value!!)
     }
 
+    fun blur()
+    {
+        Log.e("Blur", "Made it to blur function")
+        blurImage(_bitmap.value!!)
+    }
+    private external fun blurImage(bitmap: Bitmap)
+
 }
 
 // This factory class allows us to define custom constructors for the view model

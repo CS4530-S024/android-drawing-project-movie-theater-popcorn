@@ -183,33 +183,51 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageButton
-            android:id="@+id/colorSelectButton"
-            android:layout_width="87dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_color_palete"
-            android:text="More Colors" />
+        <LinearLayout
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/shapeButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+            <Button
+                android:id="@+id/shapeButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Circle" />
 
-        <Button
-            android:id="@+id/shapeButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+            <Button
+                android:id="@+id/shapeButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Square" />
 
-        <Button
-            android:id="@+id/shapeButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+            <Button
+                android:id="@+id/shapeButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Swoop" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/colorSelectButton"
+                android:layout_width="87dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_color_palete"
+                android:text="More Colors" />
+
+            <Button
+                android:id="@+id/blurButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blur Image" />
+        </LinearLayout>
 
     </LinearLayout>
 

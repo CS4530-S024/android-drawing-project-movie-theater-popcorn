@@ -50,6 +50,13 @@
             android:layout_weight="1"
             android:text="Swoop" />
 
+        <Button
+            android:id="@+id/blurButton"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Blur Image" />
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

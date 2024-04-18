@@ -161,6 +161,11 @@ class DrawingFragment : Fragment()
 
             true
         }
+        binding.blurButton.setOnClickListener {
+            Log.e("Blur Button", "Made it to blur button")
+            viewModel.blur()
+            binding.drawView.setBitmap(viewModel.bitmap.value!!)
+        }
 
         // Inflate the layout for this fragment
         return binding.root
