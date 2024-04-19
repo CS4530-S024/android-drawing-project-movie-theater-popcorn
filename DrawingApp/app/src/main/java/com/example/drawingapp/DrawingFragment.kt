@@ -123,7 +123,8 @@ class DrawingFragment : Fragment()
                 context?.filesDir?.let { it1 ->
                     viewModel.saveDrawing(
                         binding.imageName.text.toString(),
-                        it1.absolutePath
+                        it1.absolutePath,
+                        viewModel.bitmap.value!!
                     )
                 }
                 viewModel.setCurrentDrawingName(binding.imageName.text.toString())

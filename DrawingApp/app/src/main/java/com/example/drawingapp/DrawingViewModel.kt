@@ -54,9 +54,9 @@ private val _bitmap : MutableLiveData<Bitmap> =
     // val drawingsList = viewModel.allDrawings.collectAsState(listOf())
     val allDrawings: Flow<List<DrawingData>> = repository.allDrawings
 
-    fun saveDrawing(fileName: String, filePath: String){
+    fun saveDrawing(fileName: String, filePath: String, bitmap: Bitmap){
         Log.e("VM", "Saving drawing $fileName")
-        repository.saveDrawing(fileName, filePath, bitmap.value!!)
+        repository.saveDrawing(fileName, filePath, bitmap)
     }
 
     fun loadDrawing(filePath: String) {
