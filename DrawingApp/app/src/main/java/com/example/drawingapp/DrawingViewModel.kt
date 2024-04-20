@@ -33,7 +33,7 @@ private val _bitmap : MutableLiveData<Bitmap> =
 
     private val _currentDrawingName = MutableLiveData("")
     val currentDrawingName = _currentDrawingName as LiveData<String>
-    
+
     private external fun invertBitmap(bitmapDrawing: Bitmap)
     private external fun staticImage(bitmap: Bitmap)
 
