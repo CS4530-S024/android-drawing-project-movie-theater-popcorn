@@ -55,7 +55,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Invert" />
+
+        <Button
+            android:id="@+id/noiseButton"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add Static" />
 
     </LinearLayout>
 

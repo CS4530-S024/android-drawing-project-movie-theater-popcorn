@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity()
 
     companion object {
       init {
-         System.loadLibrary("drawingapp")
+         System.loadLibrary("staticDrawing")
       }
     }
 }

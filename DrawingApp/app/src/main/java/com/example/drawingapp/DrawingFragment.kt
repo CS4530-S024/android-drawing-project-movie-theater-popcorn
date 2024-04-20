@@ -159,6 +159,11 @@ class DrawingFragment : Fragment()
 
             true
         }
+        binding.noiseButton.setOnClickListener {
+            Log.e("Blur Button", "Made it to blur button")
+            viewModel.addNoise()
+            binding.drawView.setBitmap(viewModel.bitmap.value!!)
+        }
 
         binding.invertButton.setOnClickListener{
             viewModel.invertDrawing()
