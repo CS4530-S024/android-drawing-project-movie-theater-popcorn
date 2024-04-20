@@ -3,14 +3,11 @@ package com.example.drawingapp
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Environment
 import android.util.Log
-import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.flow.Flow
 
 class DrawingViewModel(private val repository: DrawingRepository): ViewModel() {
@@ -33,6 +30,51 @@ private val _bitmap : MutableLiveData<Bitmap> =
 
     private val _currentDrawingName = MutableLiveData("")
     val currentDrawingName = _currentDrawingName as LiveData<String>
+
+    private val _titles = MutableLiveData(mutableListOf<String>())
+    val titles = _titles as LiveData<List<String>>
+
+    private val _authors = MutableLiveData(mutableListOf<String>())
+    val authors = _authors as LiveData<List<String>>
+
+    private val _bitmaps = MutableLiveData(mutableListOf<Bitmap>())
+    val bitmaps = _bitmaps as LiveData<List<Bitmap>>
+
+    fun addTitle(title: String)
+    {
+        _titles.value!!.add(title)
+    }
+
+    fun addAuthor(author: String)
+    {
+        _authors.value!!.add(author)
+    }
+
+    fun addBitmap(bitmap: Bitmap)
+    {
+        _bitmaps.value!!.add(bitmap)
+    }
+
+    fun getTitle(i: Int) : String
+    {
+        return titles.value!![i]
+    }
+
+    fun getAuthor(i: Int) : String
+    {
+        return authors.value!![i]
+    }
+
+    fun getBitmap(i: Int) : Bitmap
+    {
+        return bitmaps.value!![i]
+    }
+
+    fun getTitlesSize() : Int
+    {
+        return titles.value!!.size
+    }
+
 
     fun setCurrentDrawingName(newName: String) {
         this._currentDrawingName.value = newName
