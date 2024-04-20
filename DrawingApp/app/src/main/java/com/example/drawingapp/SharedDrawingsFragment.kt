@@ -54,6 +54,20 @@ class SharedDrawingsFragment : Fragment() {
                     )
                 }) { Text("Go Back") }
             }
+            
+            LazyColumn {
+                var i = 0
+
+                items(viewModel.getTitlesSize()){
+                    DrawingItem(
+                        title = viewModel.getTitle(i),
+                        author = viewModel.getAuthor(i),
+                        bitmap = viewModel.getBitmap(i)
+                    )
+                    if (i < viewModel.getTitlesSize() - 1)
+                        i++
+                }
+            }
 
             Column {
                 for (i in 0 until viewModel.getTitlesSize()) {

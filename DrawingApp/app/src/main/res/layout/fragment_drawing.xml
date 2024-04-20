@@ -31,10 +31,8 @@
                 android:layout_width="179dp"
                 android:layout_height="39dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginTop="16dp"
                 android:hint="Drawing Name"
-                app:layout_constraintBottom_toTopOf="@+id/imageButton2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,33 +63,6 @@
                 app:layout_constraintStart_toEndOf="@+id/saveButton"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
-
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="73dp"
-                android:layout_height="34dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_undo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageName" />
-
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="72dp"
-                android:layout_height="33dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_redo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/saveButton"
-                app:layout_constraintStart_toEndOf="@+id/imageButton2"
-                app:layout_constraintTop_toBottomOf="@+id/imageName" />
 
             <Button
                 android:id="@+id/shareButton"
