@@ -120,7 +120,8 @@ class DrawingFragment : Fragment()
                 context?.filesDir?.let { it1 ->
                     viewModel.saveDrawing(
                         binding.imageName.text.toString(),
-                        it1.absolutePath
+                        it1.absolutePath,
+                        viewModel.bitmap.value!!
                     )
                 }
                 viewModel.setCurrentDrawingName(binding.imageName.text.toString())
@@ -163,6 +164,11 @@ class DrawingFragment : Fragment()
         binding.invertButton.setOnClickListener{
             viewModel.invertDrawing()
             binding.drawView.setBitmap(viewModel.bitmap.value!!)
+        }
+
+        binding.shareButton.setOnClickListener{
+            ShareDrawingFragment().show(
+                childFragmentManager, ShareDrawingFragment.TAG)
         }
 
         // Inflate the layout for this fragment

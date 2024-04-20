@@ -15,6 +15,12 @@
         <action
             android:id="@+id/existingDrawing"
             app:destination="@+id/fragment_drawing_comp" />
+        <action
+            android:id="@+id/action_fragment_home_screen_to_sharedDrawingsFragment"
+            app:destination="@id/sharedDrawingsFragment" />
+        <action
+            android:id="@+id/action_fragment_home_screen_to_logInFragment"
+            app:destination="@id/logInFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_drawing"
@@ -34,5 +40,24 @@
         <action
             android:id="@+id/action_open_saved_drawing"
             app:destination="@+id/fragment_drawing"/>
+    </fragment>
+    <fragment
+        android:id="@+id/sharedDrawingsFragment"
+        android:name="com.example.drawingapp.SharedDrawingsFragment"
+        android:label="SharedDrawingsFragment" >
+        <action
+            android:id="@+id/action_sharedDrawingsFragment_to_fragment_home_screen"
+            app:destination="@id/fragment_home_screen" />
+        <action
+            android:id="@+id/action_sharedDrawingsFragment_to_fragment_drawing"
+            app:destination="@id/fragment_drawing" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.example.drawingapp.LogInFragment"
+        android:label="LogInFragment" >
+        <action
+            android:id="@+id/action_logInFragment_to_fragment_home_screen"
+            app:destination="@id/fragment_home_screen" />
     </fragment>
 </navigation>

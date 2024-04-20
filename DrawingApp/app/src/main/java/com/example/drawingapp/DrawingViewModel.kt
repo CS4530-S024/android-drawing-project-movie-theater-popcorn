@@ -31,11 +31,55 @@ private val _bitmap : MutableLiveData<Bitmap> =
     private val _currentCap = MutableLiveData<Paint.Cap>()
     var currentCap = _currentCap as LiveData<Paint.Cap>
 
-    private val _currentDrawingName = MutableLiveData<String>("")
+    private val _currentDrawingName = MutableLiveData("")
     val currentDrawingName = _currentDrawingName as LiveData<String>
-
+    
     private external fun invertBitmap(bitmapDrawing: Bitmap)
     private external fun staticImage(bitmap: Bitmap)
+
+    private val _titles = MutableLiveData(mutableListOf<String>())
+    val titles = _titles as LiveData<List<String>>
+
+    private val _authors = MutableLiveData(mutableListOf<String>())
+    val authors = _authors as LiveData<List<String>>
+
+    private val _bitmaps = MutableLiveData(mutableListOf<Bitmap>())
+    val bitmaps = _bitmaps as LiveData<List<Bitmap>>
+
+    fun addTitle(title: String)
+    {
+        _titles.value!!.add(title)
+    }
+
+    fun addAuthor(author: String)
+    {
+        _authors.value!!.add(author)
+    }
+
+    fun addBitmap(bitmap: Bitmap)
+    {
+        _bitmaps.value!!.add(bitmap)
+    }
+
+    fun getTitle(i: Int) : String
+    {
+        return titles.value!![i]
+    }
+
+    fun getAuthor(i: Int) : String
+    {
+        return authors.value!![i]
+    }
+
+    fun getBitmap(i: Int) : Bitmap
+    {
+        return bitmaps.value!![i]
+    }
+
+    fun getTitlesSize() : Int
+    {
+        return titles.value!!.size
+    }
 
     fun setCurrentDrawingName(newName: String) {
         this._currentDrawingName.value = newName
@@ -56,8 +100,9 @@ private val _bitmap : MutableLiveData<Bitmap> =
     // Use this to get allDrawings inside a composable:
     val allDrawings: Flow<List<DrawingData>> = repository.allDrawings
 
-    fun saveDrawing(fileName: String, filePath: String){
-        repository.saveDrawing(fileName, filePath, bitmap.value!!)
+    fun saveDrawing(fileName: String, filePath: String, bitmap: Bitmap){
+        Log.e("VM", "Saving drawing $fileName")
+        repository.saveDrawing(fileName, filePath, bitmap)
     }
 
     fun loadDrawing(filePath: String) {

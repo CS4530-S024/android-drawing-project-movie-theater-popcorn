@@ -98,7 +98,8 @@ class DrawingListView : Fragment() {
                 )
 
                 Log.d("File path", "${drawing.filePath}")
-                Button(onClick = {
+
+               Button(onClick = {
                     onClick.invoke()
                     viewModel.loadDrawing(drawing.filePath)
                     viewModel.setCurrentDrawingName(drawing.fileName)
@@ -106,7 +107,6 @@ class DrawingListView : Fragment() {
                     Text(text = drawing.fileName)
                 }
             }
-
         }
     }
 }
