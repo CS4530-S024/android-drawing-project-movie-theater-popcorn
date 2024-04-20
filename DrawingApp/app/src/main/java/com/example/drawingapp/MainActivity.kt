@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity()
 
     companion object {
       init {
-         System.loadLibrary("blurDrawing")
+         System.loadLibrary("staticDrawing")
       }
     }
 }

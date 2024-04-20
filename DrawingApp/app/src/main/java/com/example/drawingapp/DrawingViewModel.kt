@@ -3,9 +3,7 @@ package com.example.drawingapp
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Environment
 import android.util.Log
-import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -64,12 +62,12 @@ private val _bitmap : MutableLiveData<Bitmap> =
         _bitmapCanvas.value = Canvas(bitmap.value!!)
     }
 
-    fun blur()
+    fun addNoise()
     {
         Log.e("Blur", "Made it to blur function")
-        blurImage(_bitmap.value!!)
+        staticImage(_bitmap.value!!)
     }
-    private external fun blurImage(bitmap: Bitmap)
+    private external fun staticImage(bitmap: Bitmap)
 
 }
 

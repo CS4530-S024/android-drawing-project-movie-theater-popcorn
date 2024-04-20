@@ -223,10 +223,10 @@
                 android:text="More Colors" />
 
             <Button
-                android:id="@+id/blurButton"
+                android:id="@+id/noiseButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Blur Image" />
+                android:text="Add Static" />
         </LinearLayout>
 
     </LinearLayout>

@@ -40,9 +40,8 @@ static int rgb_clamp(int value) {
     return value;
 }
 
-static void blurring(AndroidBitmapInfo* info, void* pixels){
-    int x, y, counter;
-    const float c = 0.5f;
+static void noise(AndroidBitmapInfo* info, void* pixels){
+    int counter;
     int red, green, blue;
     uint32_t* line;
     uint32_t* prevLine;
@@ -62,7 +61,8 @@ static void blurring(AndroidBitmapInfo* info, void* pixels){
                 green = (int)((line[xx] & 0x0000FF00) >> 8);
                 blue = (int) (line[xx] & 0x00000FF );
                 counter=0;
-                if (yy + 1 <info->height && xx - 1 >=0)
+
+                if (yy + 1 < info->height && xx - 1 >= 0)
                 {
                     red += red + ((nextLine[xx - 1]& 0x00FF0000) >> 16);
                     green += green + ((nextLine[xx - 1]& 0x0000FF00) >> 8);
@@ -90,14 +90,14 @@ static void blurring(AndroidBitmapInfo* info, void* pixels){
                     blue += blue + (nextLine[xx] & 0x000000FF);
                     counter++;
                 }
-                if (xx - 1>=0)
+                if (xx - 1 >= 0)
                 {
                     red += red + ((line[xx - 1]& 0x00FF0000) >> 16);
                     green += green + ((line[xx - 1]& 0x0000FF00) >> 8);
                     blue += blue + (line[xx - 1] & 0x000000FF);
                     counter++;
                 }
-                if (yy - 1>=0)
+                if (yy - 1 >= 0)
                 {
                     red += red + ((prevLine[xx]& 0x00FF0000) >> 16);
                     green += green + ((prevLine[xx]& 0x0000FF00) >> 8);
@@ -111,15 +111,13 @@ static void blurring(AndroidBitmapInfo* info, void* pixels){
             }
             pixels = (char*)pixels + info->stride;
         }
-
-
 }
 
 
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_drawingapp_DrawingViewModel_blurImage(JNIEnv *env, jobject thiz, jobject bitmap) {
+Java_com_example_drawingapp_DrawingViewModel_staticImage(JNIEnv *env, jobject thiz, jobject bitmap) {
     AndroidBitmapInfo  info;
     int ret;
     void* pixels;
@@ -137,7 +135,7 @@ Java_com_example_drawingapp_DrawingViewModel_blurImage(JNIEnv *env, jobject thiz
         LOGE("AndroidBitmap_lockPixels() failed ! error=%d", ret);
     }
 
-    blurring(&info, pixels);
+    noise(&info, pixels);
 
     AndroidBitmap_unlockPixels(env, bitmap);
 }

@@ -13,10 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.compose.runtime.collectAsState
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.drawingapp.databinding.FragmentDrawingBinding
 import kotlin.math.abs
@@ -161,9 +157,9 @@ class DrawingFragment : Fragment()
 
             true
         }
-        binding.blurButton.setOnClickListener {
+        binding.noiseButton.setOnClickListener {
             Log.e("Blur Button", "Made it to blur button")
-            viewModel.blur()
+            viewModel.addNoise()
             binding.drawView.setBitmap(viewModel.bitmap.value!!)
         }
 

@@ -51,11 +51,11 @@
             android:text="Swoop" />
 
         <Button
-            android:id="@+id/blurButton"
+            android:id="@+id/noiseButton"
             android:layout_width="88dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Blur Image" />
+            android:text="Add Static" />
 
     </LinearLayout>
 
