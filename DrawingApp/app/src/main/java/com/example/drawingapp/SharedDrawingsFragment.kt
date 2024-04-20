@@ -56,7 +56,6 @@ class SharedDrawingsFragment : Fragment() {
 
     @Composable
     fun AllSharedDrawings(){
-        Log.e("TEST", "TEST")
         var user by remember { mutableStateOf(Firebase.auth.currentUser) }
         Column{
         Box {
@@ -115,30 +114,30 @@ class SharedDrawingsFragment : Fragment() {
 
             }
             else {
-                Log.e("TEST2", "TEST2")
                 Column{
-                    val documents = mutableListOf<QueryDocumentSnapshot>()
+                    val titles = mutableListOf<String>()
+                    val authors = mutableListOf<String>()
                     val db = Firebase.firestore
                     val collection = db.collection(Firebase.auth.currentUser!!.email!!)
                     collection.get().addOnSuccessListener {
                         result -> for (doc in result)
                         {
-                            documents.add(doc)
-                            Log.e("TEST3", "TEST3")
+                            titles.add(doc.data.getValue("Drawing Title").toString())
+                            Log.e("TEST", "Added '${doc.data.getValue("Drawing Title")}' to Titles")
+                            authors.add(doc.data.getValue("Author").toString())
+                            Log.e("TEST", "Added '${doc.data.getValue("Author")}' to Titles")
                         }
                     }
                         .addOnFailureListener { exception ->
                             Log.w("Uh oh", "Error getting documents.", exception) }
-                    Log.e("TEST4", "TEST4: ${documents.size}")
-                    for (doc in documents) {
+                    Log.e("TEST", "Titles size: ${titles.size}")
+                    Log.e("TEST", "Authors size: ${authors.size}")
+                    for (i in 0 until titles.size) {
                         var downloadedBitmap = Bitmap.createBitmap(
                             1000, 1000, Bitmap.Config.ARGB_8888);
                         val ref = Firebase.storage.reference
                         val fileRef = ref.child(
-                            "${Firebase.auth.currentUser!!.email}/${
-                                doc.data.getValue("Drawing Title")
-                            }"
-                        )
+                            "${Firebase.auth.currentUser!!.email}/${titles[i]}")
                         fileRef.getBytes(10 * 1024 * 1024)
                             .addOnSuccessListener { bytes ->
                                 downloadedBitmap = BitmapFactory.decodeByteArray(
@@ -148,7 +147,7 @@ class SharedDrawingsFragment : Fragment() {
                             .addOnFailureListener { e ->
                                 Log.e("DOWNLOAD_IMAGE", "Failed to get image $e")
                             }
-                        ExistingDrawingItem(doc = doc, bitmap = downloadedBitmap)
+                        ExistingDrawingItem(title = titles[i], author = authors[i], bitmap = downloadedBitmap)
                     }
                 }
             }
@@ -156,13 +155,11 @@ class SharedDrawingsFragment : Fragment() {
     }
     @Composable
     fun ExistingDrawingItem(
-        doc: QueryDocumentSnapshot,
+        title: String,
+        author: String,
         bitmap: Bitmap
     )
     {
-        val title = doc.data.getValue("Drawing Title").toString()
-        val author = doc.data.getValue("Author").toString()
-
         Row(Modifier.padding(16.dp)) {
             Card {
                 Image(

@@ -97,17 +97,7 @@ class DrawingListView : Fragment() {
                 }) {
                     Text(text = drawing.fileName)
                 }
-
-               Button(onClick = {
-//                   onClick.invoke()
-                   //the dialog appears and you can enter the email
-                   ShareDrawingFragment().show(
-                       childFragmentManager, ShareDrawingFragment.TAG)
-               }) {
-                   Text(text = "Share")
-               }
             }
-
         }
     }
 }
