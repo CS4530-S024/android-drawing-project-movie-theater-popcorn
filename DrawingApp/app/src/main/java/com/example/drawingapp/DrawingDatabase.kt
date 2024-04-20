@@ -21,7 +21,6 @@ abstract class DrawingDatabase : RoomDatabase(){
         private var INSTANCE: DrawingDatabase? = null
 
         //When we want a DB we call this (basically static) method
-        //val theDB = DrawingDatabase.getDatabase(myContext)
         fun getDatabase(context: Context): DrawingDatabase {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database

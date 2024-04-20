@@ -10,9 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.drawingapp.databinding.FragmentHomeScreenBinding
 
 /**
- * A simple [Fragment] subclass.
- * Use the [HomeScreenFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * This class creates the home screen of the app
+ * when the app is launched
  */
 class HomeScreenFragment : Fragment()
 {

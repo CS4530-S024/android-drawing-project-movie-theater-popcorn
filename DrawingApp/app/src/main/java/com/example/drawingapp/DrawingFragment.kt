@@ -1,7 +1,6 @@
 package com.example.drawingapp
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
@@ -14,7 +13,6 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import com.example.drawingapp.databinding.FragmentDrawingBinding
 import kotlin.math.abs
@@ -117,6 +115,7 @@ class DrawingFragment : Fragment()
         }
 
         binding.saveButton.setOnClickListener{
+            //Checks if the user has named the file, if not save will not go through
             if(binding.imageName.text.toString() != "") {
                 context?.filesDir?.let { it1 ->
                     viewModel.saveDrawing(
@@ -139,15 +138,12 @@ class DrawingFragment : Fragment()
         binding.drawView.setOnTouchListener { _, event ->
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("touch", "TOUCH DOWN")
                     touchStart(event.x, event.y)
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("touch", "TOUCH MOVE")
                     touchMove(event.x, event.y)
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("touch", "TOUCH UP")
                     touchUp()
                 }
             }
@@ -160,7 +156,6 @@ class DrawingFragment : Fragment()
             true
         }
         binding.noiseButton.setOnClickListener {
-            Log.e("Blur Button", "Made it to blur button")
             viewModel.addNoise()
             binding.drawView.setBitmap(viewModel.bitmap.value!!)
         }
@@ -204,8 +199,6 @@ class DrawingFragment : Fragment()
     }
 
     private fun drawPath() {
-        Log.d("DrawingFragment", "DRAWING PATH")
-
         val currentPen = viewModel.currentPen.value!!
         viewModel.bitmapCanvas.value!!.drawPath(currentPen.path, paint)
 

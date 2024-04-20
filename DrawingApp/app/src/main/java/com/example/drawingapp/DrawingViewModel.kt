@@ -10,8 +10,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Hold the information of the current state
+ * of the drawing.
+ */
 class DrawingViewModel(private val repository: DrawingRepository): ViewModel() {
-//class DrawingViewModel(): ViewModel() {
 private val _bitmap : MutableLiveData<Bitmap> =
         MutableLiveData(Bitmap.createBitmap(1200, 1200, Bitmap.Config.ARGB_8888))
     var bitmap = _bitmap as LiveData<Bitmap>
@@ -32,7 +35,7 @@ private val _bitmap : MutableLiveData<Bitmap> =
     val currentDrawingName = _currentDrawingName as LiveData<String>
 
     private external fun invertBitmap(bitmapDrawing: Bitmap)
-
+    private external fun staticImage(bitmap: Bitmap)
 
     fun setCurrentDrawingName(newName: String) {
         this._currentDrawingName.value = newName
@@ -51,11 +54,9 @@ private val _bitmap : MutableLiveData<Bitmap> =
     }
 
     // Use this to get allDrawings inside a composable:
-    // val drawingsList = viewModel.allDrawings.collectAsState(listOf())
     val allDrawings: Flow<List<DrawingData>> = repository.allDrawings
 
     fun saveDrawing(fileName: String, filePath: String){
-        Log.e("VM", "Saving drawing $fileName")
         repository.saveDrawing(fileName, filePath, bitmap.value!!)
     }
 
@@ -70,10 +71,8 @@ private val _bitmap : MutableLiveData<Bitmap> =
     }
     fun addNoise()
     {
-        Log.e("Blur", "Made it to blur function")
         staticImage(_bitmap.value!!)
     }
-    private external fun staticImage(bitmap: Bitmap)
 
 }
 

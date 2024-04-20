@@ -7,7 +7,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileOutputStream
 
 class DrawingRepository(private val scope: CoroutineScope,
                         private val dao: DrawingDAO) {

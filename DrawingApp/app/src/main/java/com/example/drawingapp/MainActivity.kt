@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.*
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.fragment.app.viewModels
 import com.example.drawingapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()
@@ -24,6 +23,9 @@ class MainActivity : AppCompatActivity()
         setContentView(binding.root)
     }
 
+    /*
+        Load in C++ libraries
+     */
     companion object {
       init {
          System.loadLibrary("staticDrawing")

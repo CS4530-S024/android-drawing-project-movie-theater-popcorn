@@ -22,6 +22,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.fragment.findNavController
 import com.example.drawingapp.databinding.FragmentDrawingCompBinding
 
+/**
+ * This class creates the existing drawing storage using
+ * compose
+ */
 class DrawingListView : Fragment() {
 
 
@@ -43,7 +47,9 @@ class DrawingListView : Fragment() {
         return binding.root
     }
 
-
+    /*
+        Creates the list structure for the display
+     */
     @Composable
     fun DrawingComposable(modifier: Modifier = Modifier,
                           viewModel: DrawingViewModel = viewModel(
@@ -72,6 +78,9 @@ class DrawingListView : Fragment() {
         }
     }
 
+    /*
+        Creates the how the saved images are displayed
+     */
     @Composable
     fun ExistingDrawingItem(
         drawing: DrawingData,
