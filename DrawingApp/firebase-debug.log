@@ -1,0 +1,116 @@
+[debug] [2024-04-21T03:20:44.621Z] ----------------------------------------------------------------------
+[debug] [2024-04-21T03:20:44.624Z] Command:       C:\Users\brifu\OneDrive\DOCUME~1\MOBILE~2\GROUPA~1\ANDROI~1\DRAWIN~1\firebase-tools-instant-win.exe C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase emulators:start
+[debug] [2024-04-21T03:20:44.625Z] CLI Version:   13.7.3
+[debug] [2024-04-21T03:20:44.625Z] Platform:      win32
+[debug] [2024-04-21T03:20:44.625Z] Node Version:  v18.5.0
+[debug] [2024-04-21T03:20:44.626Z] Time:          Sat Apr 20 2024 21:20:44 GMT-0600 (Mountain Daylight Time)
+[debug] [2024-04-21T03:20:44.627Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-21T03:20:44.765Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-21T03:20:44.765Z] > authorizing via signed-in user (brifun13@gmail.com)
+[debug] [2024-04-21T03:20:44.954Z] java version "11.0.21" 2023-10-17 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.21+9-LTS-193)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.21+9-LTS-193, mixed mode)
+
+[debug] [2024-04-21T03:20:44.983Z] Parsed Java major version: 11
+[info] i  emulators: Starting emulators: auth, functions, firestore {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore"}}
+[debug] [2024-04-21T03:20:45.000Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-04-21T03:20:45.000Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-04-21T03:20:45.000Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-04-21T03:20:45.000Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-04-21T03:20:45.001Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-04-21T03:20:45.011Z] [hub] writing locator at C:\Users\brifu\AppData\Local\Temp\hub-drawingapp-mtp.json
+[debug] [2024-04-21T03:20:45.029Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-04-21T03:20:45.029Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-04-21T03:20:45.029Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mdatabase, hosting, pubsub, storage\u001b[22m"}}
+[debug] [2024-04-21T03:20:45.035Z] defaultcredentials: writing to file C:\Users\brifu\AppData\Roaming\firebase\brifun13_gmail_com_application_default_credentials.json
+[debug] [2024-04-21T03:20:45.037Z] Setting GAC to C:\Users\brifu\AppData\Roaming\firebase\brifun13_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\brifu\\AppData\\Roaming\\firebase\\brifun13_gmail_com_application_default_credentials.json"}}
+[debug] [2024-04-21T03:20:45.040Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/drawingapp-mtp/adminSdkConfig [none]
+[debug] [2024-04-21T03:20:45.627Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/drawingapp-mtp/adminSdkConfig 200
+[debug] [2024-04-21T03:20:45.627Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/drawingapp-mtp/adminSdkConfig {"projectId":"drawingapp-mtp","databaseURL":"https://drawingapp-mtp-default-rtdb.firebaseio.com","storageBucket":"drawingapp-mtp.appspot.com","locationId":"us-central"}
+[debug] [2024-04-21T03:20:45.653Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-04-21T03:20:45.653Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2024-04-21T03:20:45.653Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\brifu\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.4.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","drawingapp-mtp","--rules","C:\\Users\\brifu\\OneDrive\\Documents\\MobileAppProgramming\\groupassignment\\android-drawing-project-movie-theater-popcorn\\DrawingApp\\firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\brifu\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.4.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"drawingapp-mtp\",\"--rules\",\"C:\\\\Users\\\\brifu\\\\OneDrive\\\\Documents\\\\MobileAppProgramming\\\\groupassignment\\\\android-drawing-project-movie-theater-popcorn\\\\DrawingApp\\\\firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[warn] !  emulators: The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[info] i  functions: Watching "C:\Users\brifu\OneDrive\Documents\MobileAppProgramming\groupassignment\android-drawing-project-movie-theater-popcorn\DrawingApp\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\brifu\\OneDrive\\Documents\\MobileAppProgramming\\groupassignment\\android-drawing-project-movie-theater-popcorn\\DrawingApp\\functions\" for Cloud Functions..."}}
+[error] !!  functions: Failed to load function definition from source: FirebaseError: could not deploy functions because the "functions" directory was not found. Please create it or specify a different source directory in firebase.json {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: could not deploy functions because the \u001b[1m\"functions\"\u001b[22m directory was not found. Please create it or specify a different source directory in firebase.json"}}
+[info] i  functions: Watching "C:\Users\brifu\OneDrive\Documents\MobileAppProgramming\groupassignment\android-drawing-project-movie-theater-popcorn\DrawingApp\test" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\brifu\\OneDrive\\Documents\\MobileAppProgramming\\groupassignment\\android-drawing-project-movie-theater-popcorn\\DrawingApp\\test\" for Cloud Functions..."}}
+[error] !!  functions: Failed to load function definition from source: FirebaseError: could not deploy functions because the "test" directory was not found. Please create it or specify a different source directory in firebase.json {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: could not deploy functions because the \u001b[1m\"test\"\u001b[22m directory was not found. Please create it or specify a different source directory in firebase.json"}}
+[info] i  functions: Watching "C:\Users\brifu\OneDrive\Documents\MobileAppProgramming\groupassignment\android-drawing-project-movie-theater-popcorn\DrawingApp\firebasetest" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\brifu\\OneDrive\\Documents\\MobileAppProgramming\\groupassignment\\android-drawing-project-movie-theater-popcorn\\DrawingApp\\firebasetest\" for Cloud Functions..."}}
+[debug] [2024-04-21T03:20:57.398Z] Validating nodejs source
+[warn] !  functions: Couldn't find firebase-functions package in your source code. Have you run 'npm install'? 
+[debug] [2024-04-21T03:20:57.400Z] getFunctionsSDKVersion encountered error: Cannot find module 'firebase-functions'
+Require stack:
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\deploy\functions\runtimes\node\versioning.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\deploy\functions\runtimes\node\index.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\deploy\functions\runtimes\index.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\deploy\functions\prepare.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\emulator\functionsEmulatorShared.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\emulator\functionsEmulator.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\emulator\controller.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\emulator\commandUtils.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\commands\database-get.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\commands\index.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\index.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase.js {"code":"MODULE_NOT_FOUND","requireStack":["C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\deploy\\functions\\runtimes\\node\\versioning.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\deploy\\functions\\runtimes\\node\\index.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\deploy\\functions\\runtimes\\index.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\deploy\\functions\\prepare.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\emulator\\functionsEmulatorShared.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\emulator\\functionsEmulator.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\emulator\\controller.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\emulator\\commandUtils.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\commands\\database-get.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\commands\\index.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\index.js","C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\bin\\firebase.js"]}
+[debug] [2024-04-21T03:20:57.401Z] checkFunctionsSDKVersion encountered error: Invalid Version:  {}
+[debug] [2024-04-21T03:20:57.402Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-04-21T03:20:57.402Z] Building nodejs source
+[debug] [2024-04-21T03:20:57.403Z] Failed to find version of module node: reached end of search path C:\Users\brifu\OneDrive\Documents\MobileAppProgramming\groupassignment\android-drawing-project-movie-theater-popcorn\DrawingApp\firebasetest\node_modules
+[info] +  functions: Using node@18 from host. 
+[debug] [2024-04-21T03:20:57.405Z] Could not parse firebase-functions version '' into semver. Falling back to parseTriggers.
+[error] !!  functions: Failed to load function definition from source: FirebaseError: Error parsing triggers: Cannot find module 'firebase-functions/v2/https'
+Require stack:
+- C:\Users\brifu\OneDrive\Documents\MobileAppProgramming\groupassignment\android-drawing-project-movie-theater-popcorn\DrawingApp\firebasetest\index.js
+- C:\Users\brifu\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\deploy\functions\runtimes\node\triggerParser.js
+1) If you want to compile the package/file into executable, please pay attention to compilation warnings and specify a literal in 'require' call. 2) If you don't want to compile the package/file into executable and want to 'require' it from filesystem (likely plugin), specify an absolute path in 'require' call using process.cwd() or process.execPath.
+
+Try running "npm install" in your functions directory before deploying. {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: Error parsing triggers: Cannot find module 'firebase-functions/v2/https'\nRequire stack:\n- C:\\Users\\brifu\\OneDrive\\Documents\\MobileAppProgramming\\groupassignment\\android-drawing-project-movie-theater-popcorn\\DrawingApp\\firebasetest\\index.js\n- C:\\Users\\brifu\\.cache\\firebase\\tools\\lib\\node_modules\\firebase-tools\\lib\\deploy\\functions\\runtimes\\node\\triggerParser.js\n1) If you want to compile the package/file into executable, please pay attention to compilation warnings and specify a literal in 'require' call. 2) If you don't want to compile the package/file into executable and want to 'require' it from filesystem (likely plugin), specify an absolute path in 'require' call using process.cwd() or process.execPath.\n\nTry running \"npm install\" in your functions directory before deploying."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┐
+│ Emulator       │ Host:Port      │
+├────────────────┼────────────────┤
+│ Authentication │ 127.0.0.1:9099 │
+├────────────────┼────────────────┤
+│ Functions      │ 127.0.0.1:5001 │
+├────────────────┼────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │
+└────────────────┴────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2024-04-21T03:29:26.810Z] Received signal SIGINT (Ctrl-C) 1
