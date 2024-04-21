@@ -17,10 +17,13 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.asFlow
 import androidx.navigation.fragment.findNavController
 import com.example.drawingapp.databinding.FragmentDrawingCompBinding
 import com.google.firebase.Firebase
@@ -56,26 +59,11 @@ class SharedDrawingsFragment : Fragment() {
             }
             
             LazyColumn {
-                var i = 0
-
                 items(viewModel.getTitlesSize()){
                     DrawingItem(
-                        title = viewModel.getTitle(i),
-                        author = viewModel.getAuthor(i),
-                        bitmap = viewModel.getBitmap(i)
-                    )
-                    if (i < viewModel.getTitlesSize() - 1)
-                        i++
-                }
-            }
-
-            Column {
-                for (i in 0 until viewModel.getTitlesSize()) {
-                    DrawingItem(
-                        title = viewModel.getTitle(i),
-                        author = viewModel.getAuthor(i),
-                        bitmap = viewModel.getBitmap(i)
-                    )
+                        title = viewModel.getTitle(it),
+                        author = viewModel.getAuthor(it),
+                        bitmap = viewModel.getBitmap(it))
                 }
             }
         }
